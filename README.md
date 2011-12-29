@@ -16,34 +16,34 @@ Glad you asked! It's simple!
 
 ### To profile a block of code:
 
-> **Method #1**
->
-> 	<?php
-> 		require 'profiler.php';
-> 
-> 		Profiler::enable();
-> 		
-> 		$profBlock = Profiler::start('my block');
-> 		sleep(1);
-> 		$profBlock->end();
-> 		
-> 	?>
+**Method #1**
+
+		<?php
+ 		require 'profiler.php';
+ 
+		Profiler::enable();
+ 		
+ 		$profBlock = Profiler::start('my block');
+ 		sleep(1);
+ 		$profBlock->end();
+ 		
+	 	?>
 
 You can also accomplish the same thing without keeping track of the reference to the current step block, like this:
 
-> **Method #2**
-> 
-> 	<?php
-> 		require 'profiler.php';
-> 		
-> 		Profiler::enable();
-> 		
-> 		Profiler::start('my block');
-> 		sleep(1);
-> 		Profiler::end('my block');
-> 	?>
+**Method #2**
+ 
+	 	<?php
+ 		require 'profiler.php';
+ 	
+ 		Profiler::enable();
+ 		
+ 		Profiler::start('my block');
+ 		sleep(1);
+ 		Profiler::end('my block');
+	 	?>
 	
-> The caveat to method #2 is that your strings must match, so it's easy to overlook a small spelling mistake.  However, if the strings don't match, you'll get a PHP warning telling you as such.
+ The caveat to method #2 is that your strings must match, so it's easy to overlook a small spelling mistake.  However, if the strings don't match, you'll get a PHP warning telling you as such.
 
 ### To profile an sql query:
 
