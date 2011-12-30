@@ -4,7 +4,7 @@ class Profiler
 {
 	protected static
 		$init = false,
-		$enabled = true,
+		$enabled = false,
 		$currentNode = null,
 		$depthCount = 0,
 		
@@ -14,7 +14,9 @@ class Profiler
 		$globalEnd = 0,
 		$globalDuration = 0,
 		
-		$profilerKey = null;
+		$profilerKey = null,
+		
+		$ghostNode;
 	
 	public static function init()
 	{
@@ -22,6 +24,7 @@ class Profiler
 		
 		self::$globalStart = microtime(true);
 		self::$profilerKey = md5(rand(1,1000) . 'louddoor!' . time());
+		self::$ghostNode = new ProfilerGhostNode;
 		self::$init = true;
 	}
 	
@@ -44,12 +47,12 @@ class Profiler
 		else
 		{
 			throw new exception("Can not disable profiling once it has begun.");
-		}		
+		}
 	}
 	
 	public static function start($nodeName, array $params = array())
 	{	
-		if (!self::isEnabled()) return;
+		if (!self::isEnabled()) return self::$ghostNode;
 				
 		$newNode = new ProfilerNode($nodeName, ++self::$depthCount, self::$currentNode, self::$profilerKey);
 		
@@ -69,7 +72,7 @@ class Profiler
 	
 	public static function end($nodeName, $nuke = false)
 	{	
-		if (!self::isEnabled()) return;
+		if (!self::isEnabled()) return self::$ghostNode;
 		
 		if (self::$currentNode == null)
 		{
@@ -98,7 +101,7 @@ class Profiler
 	
 	public static function sqlStart($query)
 	{	
-		if (!self::isEnabled()) return;
+		if (!self::isEnabled()) return self::$ghostNode;
 	
 		$sqlProfile = new ProfilerSQLNode($query, self::$currentNode);
 				
@@ -109,14 +112,14 @@ class Profiler
 	
 	public static function sqlEnd($query)
 	{	
-		if (!self::isEnabled()) return;
+		if (!self::isEnabled()) return self::$ghostNode;
 	
 		return self::$currentNode->sqlEnd($query);
 	}
 	
-	public function render($show_depth = 2)
+	public function render($show_depth = -1)
 	{	
-		if (!self::isEnabled()) return;
+		if (!self::isEnabled()) return self::$ghostNode;
 	
 		self::end("___GLOBAL_END_PROFILER___", true);
 		
@@ -335,5 +338,13 @@ class ProfilerSQLNode
 	public function getDuration()
 	{
 		return round($this->duration * 1000, 1);
+	}
+}
+
+class ProfilerGhostNode
+{
+	public function __call($method, $params)
+	{
+		return;
 	}
 }
