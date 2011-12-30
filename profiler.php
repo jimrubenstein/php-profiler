@@ -345,6 +345,6 @@ class ProfilerGhostNode
 {
 	public function __call($method, $params)
 	{
-		return;
+		return $this;
 	}
 }
