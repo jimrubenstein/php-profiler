@@ -28,10 +28,10 @@
 			<tfoot>
 				<tr>
 					<td colspan="3">
-						show trivial
-						show time w/children
+						<a href="#" id="profiler-show-trivial_button">show trivial</a>
+						<a href="#" id="profiler-show-total_duration">show time w/children</a>
 					</td>
-					<td colspan="3">xx<span class="unit">% in sql</span></td>
+					<td colspan="3"><?= round(self::getTotalQueryTime() / self::getGlobalDuration(), 2) * 100; ?><span class="unit">% in sql</span></td>
 				</tr>
 			</tfoot>
 		</table>
@@ -128,6 +128,23 @@ td.profiler-stat {
 	{
 		$(this).toggleClass('profiler-button_selected');
 		$('#profiler-results').toggleClass('profiler-hidden');
+	});
+	
+	var flagChildrenVisible = false;
+	$('#profiler-show-total_duration').click(function(event)
+	{
+		if (flagChildrenVisible)
+		{
+			$('.profiler-step_total_duration').hide();
+			$(this).text("show time w/children");
+			flagChildrenVisible = false;
+		}
+		else
+		{
+			$('.profiler-step_total_duration').show();
+			$(this).text('hide children');
+			flagChildrenVisible = true;
+		}
 	});
 })(jQuery);
 </script>

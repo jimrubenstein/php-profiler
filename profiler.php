@@ -14,6 +14,8 @@ class Profiler
 		$globalEnd = 0,
 		$globalDuration = 0,
 		
+		$totalQueryTime = 0,
+		
 		$profilerKey = null,
 		
 		$ghostNode;
@@ -115,6 +117,16 @@ class Profiler
 		if (!self::isEnabled()) return self::$ghostNode;
 	
 		return self::$currentNode->sqlEnd($query);
+	}
+	
+	public static function addQueryDuration($time)
+	{
+		return self::$totalQueryTime += $time;
+	}
+	
+	public static function getTotalQueryTime()
+	{
+		return round(self::$totalQueryTime * 1000, 1);
 	}
 	
 	public function render($show_depth = -1)
@@ -238,6 +250,13 @@ class ProfilerNode
 		return $this->parentNode;
 	}
 	
+	public function increaseChildDuration($time)
+	{
+		$this->childDuration += $time;
+
+		return $this->childDuration;
+	}
+	
 	public function addChild($childNode)
 	{
 		$this->childNodes []= $childNode;
@@ -251,13 +270,6 @@ class ProfilerNode
 	public function getChildren()
 	{
 		return $this->childNodes;
-	}
-	
-	public function increaseChildDuration($time)
-	{
-		$this->childDuration += $time;
-		
-		return $this->childDuration;
 	}
 	
 	public function hasSQLQueries()
@@ -278,8 +290,8 @@ class ProfilerNode
 	public function addQueryDuration($time)
 	{
 		$this->totalSQLQueryDuration += $time;
-	}
-	
+	}	
+		
 	public function getTotalSQLQueryDuration()
 	{
 		return round($this->totalSQLQueryDuration * 1000, 1);
@@ -330,6 +342,7 @@ class ProfilerSQLNode
 			$this->ended = microtime(true);
 			$this->duration = $this->ended - $this->started;
 			$this->profileNode->addQueryDuration($this->duration);
+			profiler::addQueryDuration($this->duration);
 		}
 		
 		return $this;
