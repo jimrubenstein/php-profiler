@@ -14,6 +14,10 @@ class Profiler
 		$globalEnd = 0,
 		$globalDuration = 0,
 		
+		$childDurations = array(),
+		$trivialThreshold = .75,
+		$trivialThresholdMS = 0,
+		
 		$totalQueryTime = 0,
 		
 		$profilerKey = null,
@@ -128,6 +132,16 @@ class Profiler
 	{
 		return round(self::$totalQueryTime * 1000, 1);
 	}
+		
+	public static function getGlobalStart()
+	{
+		return round(self::$globalStart * 1000, 1);
+	}
+	
+	public function getGlobalDuration()
+	{
+		return round(self::$globalDuration * 1000, 1);
+	}
 	
 	public function render($show_depth = -1)
 	{	
@@ -137,18 +151,42 @@ class Profiler
 		
 		self::$globalEnd = microtime(true);
 		self::$globalDuration = self::$globalEnd - self::$globalStart;
-		
+
+		self::calculateThreshold();
+				
 		require_once dirname(__FILE__) . '/profiler_tpl.tpl.php';
 	}
 	
-	public static function getGlobalStart()
+	public function addDuration($time)
 	{
-		return round(self::$globalStart * 1000, 1);
+		self::$childDurations []= $time;
 	}
 	
-	public function getGlobalDuration()
+	//this should be a decimal representing the percentile boundary
+	//default is .75. this translates to "show me all steps which are only faster than 75% of all other steps"
+	public function setTrivialThreshold($threshold)
 	{
-		return round(self::$globalDuration * 1000, 1);
+		self::$trivialThreshold = $threshold;
+	}
+	
+	protected function calculateThreshold()
+	{
+		foreach (self::$childDurations as &$childDuration)
+		{
+			$childDuration = round($childDuration * 1000, 1);
+		}
+		
+		sort(self::$childDurations);
+		//self::$childDurations = array_reverse(self::$childDurations);
+		
+		self::$trivialThresholdMS = self::$childDurations[ floor(count(self::$childDurations) * self::$trivialThreshold) ];
+	}
+		
+	public function isTrivial($node)
+	{
+		$node_duration = $node->getSelfDuration();
+		
+		return $node_duration < self::$trivialThresholdMS;
 	}
 }
 //initialize this as soon as we include it. should be minimal overhead, so it's okay to do this all the time.
@@ -207,6 +245,7 @@ class ProfilerNode
 			if ($this->parentNode)
 			{
 				$this->parentNode->increaseChildDuration($this->totalDuration);
+				profiler::addDuration( $this->selfDuration );
 			}
 		}
 		
@@ -270,6 +309,29 @@ class ProfilerNode
 	public function getChildren()
 	{
 		return $this->childNodes;
+	}
+	
+	public function hasNonTrivialChildren()
+	{
+		if ($this->hasChildren())
+		{
+			foreach ($this->getChildren() as $child)
+			{
+				if (!profiler::isTrivial($child))
+				{
+					return true;
+				}
+				else
+				{
+					if ($child->hasNonTrivialChildren())
+					{
+						return true;
+					}
+				}
+			}
+		}
+		
+		return false;
 	}
 	
 	public function hasSQLQueries()

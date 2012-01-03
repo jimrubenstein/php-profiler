@@ -3,7 +3,7 @@
 		<?= self::getGlobalDuration(); ?> <span class="profiler-unit">ms</span>
 	</div>
 	
-	<div id="profiler-results" class="profiler-popup profiler-hidden">
+	<div id="profiler-results" class="profiler-popup profiler-hidden profiler-children-hidden profiler-trivial-hidden">
 		<div class="profiler-info">
 			<span class="profiler-title"><?= substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], '?')); ?></span>
 			
@@ -75,7 +75,7 @@
 
 .profiler-popup {
 	float: left;
-	max-width: 500px;
+	max-width: 575px;
 	max-height: 560px;
 	margin-left: -2px;
 	top: -1px; 
@@ -107,8 +107,12 @@
 	text-align: right;
 }
 
+.profiler-children-hidden .profiler-step_total_duration { display: none; }
+.profiler-trivial-hidden .profiler-trivial td { display: none; }
+.profiler-trivial td { color: #aaa !important; }
+
 .profiler-popup table .profiler-step_id {
-	max-width: 275px;
+	width: 250px;
 	text-align: left;
 	color: #555;
 }
@@ -117,9 +121,9 @@ td.profiler-stat {
 	font-family: Consolas,monospace,serif;
 	font-size: 95%;
 	color: #000;
+	width: 90px;
 }
 
-.profiler-step_total_duration { display: none; }
 </style>
 
 <script type="text/javascript" charset="utf-8">
@@ -135,22 +139,39 @@ td.profiler-stat {
 	{
 		if (flagChildrenVisible)
 		{
-			$('.profiler-step_total_duration').hide();
+			$('#profiler-results').addClass('profiler-children-hidden')
 			$(this).text("show time w/children");
 			flagChildrenVisible = false;
 		}
 		else
 		{
-			$('.profiler-step_total_duration').show();
+			$('#profiler-results').removeClass('profiler-children-hidden')
 			$(this).text('hide children');
 			flagChildrenVisible = true;
 		}
 	});
+	
+	var flagTrivialVisible = false;
+	$('#profiler-show-trivial_button').click(function(event)
+	{
+		if (flagTrivialVisible) //show trivial methods
+		{
+			flagTrivialVisible = false;
+			$('#profiler-results').addClass('profiler-trivial-hidden')
+			$(this).text('show trivial');
+		}
+		else
+		{
+			flagTrivialVisible = true;
+			$('#profiler-results').removeClass('profiler-trivial-hidden')
+			$(this).text('hide trivial');
+		}
+	})
 })(jQuery);
 </script>
 
 <? function renderNode($node, $max_depth = -1) { ?>
-	<tr class="depth_<?= $node->getDepth(); ?>">
+	<tr class="depth_<?= $node->getDepth(); ?> <?= profiler::isTrivial($node) && !$node->hasNonTrivialChildren()? 'profiler-trivial' : ''; ?>">
 		<td class="profiler-step_id"><?= str_repeat('&nbsp;&nbsp;&nbsp;', $node->getDepth() - 1); ?><?= $node->getName(); ?></td>
 		<td class="profiler-stat profiler-step_self_duration"><?= $node->getSelfDuration(); ?></td>
 		<td class="profiler-stat profiler-step_total_duration"><?= $node->getTotalDuration(); ?></td>
