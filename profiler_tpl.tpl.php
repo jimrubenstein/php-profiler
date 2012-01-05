@@ -165,60 +165,7 @@ pre.prettyprint {
 	
 		<div id="profiler-query-results" class="profiler-result profiler-result-queries profiler-hidden">
 			<table border="0" cell-padding="0" cellspacing="0">
-				<? foreach (self::$topNodes as $node): ?>
-					<? if ($node->hasSQLQueries()): $nodeQueries = $node->getSQLQueries();?>
-						<tr class="profiler-query-node-name" id="profiler-node-queries-<?= md5($node->getName() . $node->getStart()); ?>">
-							<th colspan="4"><?= $node->getName(); ?></th>
-						</tr>
-					
-						<? foreach ($nodeQueries as $query): $c = 0; ?>
-							<tr class="profiler-query-info-header profiler-node-queries-<?= md5($node->getName() . $node->getStart()); ?>">
-								<th class="profiler-gutter">&nbsp;</td>
-								<th>start time (ms)</th>
-								<th>duration (ms)</th>
-								<th>query type</th>
-							</tr>
-							<tr class="profiler-query-info profiler-node-queries-<?= md5($node->getName() . $node->getStart()); ?>">
-								<td>&nbsp;</td>
-								<td class="profiler-query-start-timer profiler-monospace">
-									<span class="profiler-unit">T+</span><?= round($query->getStart() - self::getGlobalStart(), 1); ?>
-								</td>
-								<td class="profiler-query-duration profiler-monospace"><?= $query->getDuration(); ?></td>
-								<td class="profiler-query-type"><?= $query->getQueryType(); ?></td>
-							</tr>
-							<tr>
-								<td class="profiler-node-queries-<?= md5($node->getName() . $node->getStart()); ?>">&nbsp;</td>
-								<td class="profiler-node-queries-<?= md5($node->getName() . $node->getStart()); ?>" colspan="3">
-									<pre class="prettyprint lang-sql"><?= $query->getQuery(); ?></pre>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="4" class="profiler-query-more-info-links">
-									<a href="#profiler-results" class="profiler-back-to-top">top</a>
-									&nbsp;&middot;&nbsp;
-									<a href="#<?= md5($query->getQuery()) . "_query_callstack"; ?>" class="profiler-show-callstack" data-query-id="<?= md5($query->getQuery()); ?>">show callstack</a>
-								</td>
-							</tr>
-							<tr class="profiler-hidden" id="<?= md5($query->getQuery()) . "_query_callstack"; ?>">
-								<td>&nbsp;</td>
-								<td colspan="3">
-									<table class="profiler-query_callstack">
-										<? foreach ($query->getCallstack() as $stackStep): ?>
-											<tr class="<?= ++$c % 2? 'odd' : 'even'; ?>">
-												<td class="profiler-callstack-method"><code class="prettyprint"><?= (!empty($stackStep['class'])? $stackStep['class'] . $stackStep['type'] : '') . $stackStep['function']; ?></code></td>
-											</tr>
-										<? endforeach; ?>
-									</table>
-								</td>
-							</tr>
-							<tr class="profiler-query-seperator">
-								<td colspan="4"><div class="profiler-hr"><hr /></div></td>
-							</tr>
-							
-						<? endforeach; ?>
-						
-					<? endif; ?>
-				<? endforeach; ?>
+				<? foreach (self::$topNodes as $node): ProfilerRenderer::renderNodeSQL($node); endforeach; ?>
 			</table>
 		</div><!-- /#profiler-query-results -->
 	</div><!-- /#profiler-results-container -->
@@ -227,7 +174,10 @@ pre.prettyprint {
 <script src="<?= LOUDDOOR_SERVER_PATH; ?>/js/code-prettify/prettify.js" type="text/javascript" charset="utf-8"></script>
 <script src="<?= LOUDDOOR_SERVER_PATH; ?>/js/code-prettify/lang-sql.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
-(function($){
+(function($)
+{
+	console.log('are we getting runned?');
+		
 	$('#pofiler-main_timer').click(function(event)
 	{
 		$(this).toggleClass('profiler-button_selected');
