@@ -388,13 +388,19 @@ class ProfilerSQLNode
 		
 		$started = null,
 		$ended = null,
-		$duration = null;
+		$duration = null,
+		
+		$callstack = array();
 		
 	public function __construct($query, $profileNode = null)
 	{
 		$this->started = microtime(true);
 		$this->query = $query;
 		$this->profileNode = $profileNode;
+		
+		$this->callstack = debug_backtrace(false);
+		array_shift($this->callstack);
+		array_shift($this->callstack);
 	}
 	
 	public function end()
@@ -410,9 +416,50 @@ class ProfilerSQLNode
 		return $this;
 	}
 	
+	public function getQuery()
+	{
+		return preg_replace('#^\s+#m', "\n", $this->query);
+	}
+	
+	public function getQueryType()
+	{
+		list($start_clause) = preg_split("#\s+#", $this->getQuery()); 
+		
+		$start_clause = strtolower($start_clause);
+		
+		switch ($start_clause)
+		{
+			case 'select':
+				$type = 'reader';
+			break;
+			
+			case 'insert':
+			case 'update':
+			case 'delete':
+				$type = 'writer';
+			break;
+			
+			default:
+				$type = 'special';
+			break;
+		}
+		
+		return $type;
+	}
+	
 	public function getDuration()
 	{
 		return round($this->duration * 1000, 1);
+	}
+	
+	public function getStart()
+	{
+		return round($this->started * 1000, 1);
+	}
+	
+	public function getCallstack()
+	{
+		return $this->callstack;
 	}
 }
 
@@ -421,5 +468,32 @@ class ProfilerGhostNode
 	public function __call($method, $params)
 	{
 		return $this;
+	}
+}
+
+class ProfilerRenderer
+{
+	public function renderNode($node, $max_depth = 1) { ?>
+
+		<tr class="depth_<?= $node->getDepth(); ?> <?= profiler::isTrivial($node) && !$node->hasNonTrivialChildren()? 'profiler-trivial' : ''; ?>">
+			<td class="profiler-step_id"><?= str_repeat('&nbsp;&nbsp;&nbsp;', $node->getDepth() - 1); ?><?= $node->getName(); ?></td>
+			<td class="profiler-stat profiler-monospace profiler-step_self_duration"><?= $node->getSelfDuration(); ?></td>
+			<td class="profiler-stat profiler-monospace profiler-step_total_duration"><?= $node->getTotalDuration(); ?></td>
+			<td class="profiler-stat profiler-monospace profiler-start_delay">
+				<span class="profiler-unit">+</span><?= round($node->getStart() - profiler::getGlobalStart(), 1); ?>
+			</td>
+			<td class="profiler-stat profiler-monospace profiler-query_count">
+				<a href="#" class="profiler-show-queries-button" data-node-id="<?= md5($node->getName() . $node->getStart()); ?>"><?= $node->getSQLQueryCount() . " sql"; ?></a>
+			</td>
+			<td class="profiler-stat profiler-monospace profiler-query_time"><?= $node->getTotalSQLQueryDuration(); ?></td>
+		</tr>
+
+		<? if ($node->hasChildren() && ($max_depth == -1 || $max_depth > $node->getDepth()))
+		{
+			foreach ($node->getChildren() as $childNode)
+			{
+				self::renderNode($childNode, $max_depth);
+			}
+		}
 	}
 }
