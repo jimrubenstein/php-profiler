@@ -349,7 +349,7 @@ class Profiler
 	 *
 	 * @return float duration of the script (in milliseconds, 1 significant digit)
 	 */
-	public function getGlobalDuration()
+	public static function getGlobalDuration()
 	{
 		return round(self::$globalDuration * 1000, 1);
 	}
@@ -359,7 +359,7 @@ class Profiler
 	 *
 	 * @param int $show_depth the depth of the step tree to traverse when rendering the profiler output. -1 to render the entire tree
 	 */
-	public function render($show_depth = -1)
+	public static function render($show_depth = -1)
 	{	
 		if (!self::isEnabled()) return self::$ghostNode;
 	
@@ -380,7 +380,7 @@ class Profiler
 	 * 
 	 * @param float $time duration of the child node in microseconds
 	 */
-	public function addDuration($time)
+	public static function addDuration($time)
 	{
 		self::$childDurations []= $time;
 	}
@@ -409,7 +409,7 @@ class Profiler
 	 * @uses profiler::$trivialThresdhold
 	 * @see profiler::$trivialThresholdMS
 	 */
-	protected function calculateThreshold()
+	protected static function calculateThreshold()
 	{
 		foreach (self::$childDurations as &$childDuration)
 		{
@@ -428,7 +428,7 @@ class Profiler
 	 *
 	 * @return bool true if a node is trivial, false if not
 	 */
-	public function isTrivial($node)
+	public static function isTrivial($node)
 	{
 		$node_duration = $node->getSelfDuration();
 		
