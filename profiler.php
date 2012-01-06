@@ -37,6 +37,8 @@
  *
  * The profiler class is where all interaction with the php-profiler takes place.  You use it to create
  * step nodes and render the output.
+ * 
+ * @package php-profiler
  */
 class Profiler
 {
@@ -442,6 +444,8 @@ profiler::init();
 
 /**
  * Class which represents the profiler steps
+ *
+ * @package php-profiler
  */
 class ProfilerNode
 {
@@ -826,6 +830,8 @@ class ProfilerNode
 
 /**
  * Class representing each SQL query run
+ *
+ * @package php-profiler
  */
 class ProfilerSQLNode
 {
@@ -990,6 +996,8 @@ class ProfilerSQLNode
 
 /**
  * Ghost node used as a faux ProfilerNode and ProfilerSQLNode when the Profiler is disabled
+ *
+ * @package php-profiler
  */
 class ProfilerGhostNode
 {
@@ -1004,6 +1012,8 @@ class ProfilerGhostNode
 
 /**
  * Rendering class used to render special step nodes.
+ *
+ * @package php-profiler
  */
 class ProfilerRenderer
 {
@@ -1039,11 +1049,7 @@ class ProfilerRenderer
 	 *
 	 * @var string
 	 */
-<<<<<<< Updated upstream
 	protected static $prettifyLocation = '/';
-=======
-	protected $prettifyLocation = '/code-prettify';
->>>>>>> Stashed changes
 	
 	/**
 	 * Set whether to include jQuery library or not
