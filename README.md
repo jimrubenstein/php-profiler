@@ -72,10 +72,13 @@ That's it!  You'll now be able to spot optimizationaly troubled spots of your ap
 - The `Profiler::enable();` call is intended to be called conditionally.  You are absolutely not going to want to have the profiler running full-time in your production environment.  That'd clearly be an overly high waste of resources!  Only enable profiling when you actually need to see how things are going.  *Pro Tip:* Enable profiling conditionally based on your requesting IP address, or some other authentication system.  This way profiling will always be turned on for you, and never for your visitors.
 - The `Profiler::render();` method automatically ends every block in the stack so it can accurately output the time it spent in each block as best it can.  (Basically, if you wanted to profile your view, you'd have no way to see how much time it took to render the view, if the view profile block was ended after output was generated.).
 - The `Profiler::render();` method accepts a `$max_depth` parameter which allows you to tell the renderer not to render any steps beyond the maximum depth passed.  Default is -1, which means "give it all to me!"
-- You can "skip" ending child blocks by just ending a parent block.  You can do this by calling `Profiler::end();` with the name of the parent block you want to end.  This will close every child block (regardless of name) until it reaches the parent.  This **does** produce warnings!  *Be Carefule!* You can go all the way to the root level by accidentally referencing a parent node incorrectly!
+- You can "skip" ending child blocks by just ending a parent block.  You can do this by calling `Profiler::end();` with the name of the parent block you want to end.  This will close every child block (regardless of name) until it reaches the parent.  This **does** produce warnings!  *Be Careful!* You can go all the way to the root level by accidentally referencing a parent node incorrectly!
 
-License
--------
+## Support
+
+Put bugs into issues, and feel free to fork + submit pull requests for any new features/bug fixes/etc.
+
+##License
 
 Copyright (C) 2012 Jim Rubenstein <jrubenstein@gmail.com>
 
@@ -97,8 +100,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Contributors
-------------
+## Contributors
+
 1. Jim Rubenstein ([@jim_rubenstein](http://twitter.com/jim_rubenstein))
 2. Bryan Peterson ([@lazyshot](http://twitter.com/lazyshot))
 3. Jimmy Sawczuk ([@jimmysawczuk](http://twitter.com/jimmysawczuk))
