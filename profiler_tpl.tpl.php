@@ -136,6 +136,7 @@
 .profiler-hr { border-bottom: 1px solid #aaa; height: 1px; padding: 0; }
 .profiler-hr hr { display: none; }
 
+.profiler-result-queries table { width: 100%; }
 .profiler-result-queries th { font-weight: normal; font-size: 85%; color: #aaa; text-align: left; }
 .profiler-result-queries .profiler-query-node-name th { background: #ddd; color: #555; }
 .profiler-result-queries .profiler-query-info td { font-size: 85%; }
@@ -291,7 +292,7 @@ pre.prettyprint {
 		$('.profiler-node-queries-' + nodeId).each(function () {
 			var cell = $(this),
 			highlightHex = '#FFFFBB',
-			currentColor = 'transparent';
+			currentColor = '#FFF';
 			
 			cell.css('backgroundColor', highlightHex);
 			
