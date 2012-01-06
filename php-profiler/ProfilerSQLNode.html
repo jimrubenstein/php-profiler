@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Docs For Class ProfilerSQLNode</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+  <script src="../media/lib/classTree.js"></script>
+<link id="webfx-tab-style-sheet" type="text/css" rel="stylesheet" href="../media/lib/tab.webfx.css" />
+<script type="text/javascript" src="../media/lib/tabpane.js"></script>
+  <script language="javascript" type="text/javascript" src="../media/lib/ua.js"></script>
+<script language="javascript" type="text/javascript">
+	var imgPlus = new Image();
+	var imgMinus = new Image();
+	imgPlus.src = "../media/images/plus.gif";
+	imgMinus.src = "../media/images/minus.gif";
+	
+	function showNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgMinus.src;
+		oTable.style.display = "block";
+	}
+	
+	function hideNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgPlus.src;
+		oTable.style.display = "none";
+	}
+	
+	function nodeIsVisible(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+        		break;
+        }
+		return (oTable && oTable.style.display == "block");
+	}
+	
+	function toggleNodeVisibility(Node){
+		if (nodeIsVisible(Node)){
+			hideNode(Node);
+		}else{
+			showNode(Node);
+		}
+	}
+</script>
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><!-- Start of Class Data -->
+<h2>
+	Class ProfilerSQLNode
+</h2> (line <span class="linenumber">836</span>)
+<div class="tab-pane" id="tabPane1">
+<script type="text/javascript">
+tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
+</script>
+
+<div class="tab-page" id="Description">
+<h2 class="tab">Description</h2>
+<pre>
+</pre>
+<p>
+	<b><i>Located in File: <a href="_profiler.php.html">/profiler.php</a></i></b><br>
+</p>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Class representing each SQL query run</h5>
+<ul>
+	</ul>
+<br /><hr />
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "Description" ) );</script>
+<div class="tab-page" id="tabPage1">
+
+<h2 class="tab">Class Variables</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="var-title">
+    <span class="var-type">array</span>
+    <a href="#var$callstack" title="details" class="property"><strong>$callstack</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">float</span>
+    <a href="#var$duration" title="details" class="property"><strong>$duration</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">float</span>
+    <a href="#var$ended" title="details" class="property"><strong>$ended</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type"><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></span>
+    <a href="#var$profileNode" title="details" class="property"><strong>$profileNode</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">string</span>
+    <a href="#var$query" title="details" class="property"><strong>$query</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">float</span>
+    <a href="#var$started" title="details" class="property"><strong>$started</strong></a>
+</div>
+<hr />
+<a name="var$callstack" id="var$callstack"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$callstack = array()</strong> (line <span class="linenumber">878</span>)
+ </h4>
+<h4>Data type : array</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Call stack backtrace of all methods/functions executed up until this SQL query is run</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$duration" id="var$duration"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$duration =  null</strong> (line <span class="linenumber">871</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Duration for this query (in microseconds)</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$ended" id="var$ended"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$ended =  null</strong> (line <span class="linenumber">864</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>End time of this query (in microseconds)</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$profileNode" id="var$profileNode"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$profileNode</strong> (line <span class="linenumber">850</span>)
+ </h4>
+<h4>Data type : <a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Reference to the step this SQL query runs in</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$query" id="var$query"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$query</strong> (line <span class="linenumber">843</span>)
+ </h4>
+<h4>Data type : string</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>The query that this object tracks</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$started" id="var$started"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$started =  null</strong> (line <span class="linenumber">857</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Start time of this query (in microseconds)</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+</div>
+<div class="tab-page" id="constantsTabpage">
+
+<h2 class="tab">Class Constants</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<hr />
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "constantsTabpage" ) );</script>
+</div>
+<div class="tab-page" id="tabPage2">
+<h2 class="tab">Method Detail</h2>
+<!-- ============ METHOD DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="method-summary">
+    <div class="method-definition">
+            <span class="method-result">ProfilerSQLNode</span>
+        <a href="#method__construct" title="details" class="method-name">__construct</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$query</span>, [<span class="var-type">bool|<a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></span>&nbsp;<span class="var-name">$profileNode</span> = <span class="var-default">null</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a></span>
+        <a href="#methodend" title="details" class="method-name">end</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">array</span>
+        <a href="#methodgetCallstack" title="details" class="method-name">getCallstack</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">float</span>
+        <a href="#methodgetDuration" title="details" class="method-name">getDuration</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">string</span>
+        <a href="#methodgetQuery" title="details" class="method-name">getQuery</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">string</span>
+        <a href="#methodgetQueryType" title="details" class="method-name">getQueryType</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">float</span>
+        <a href="#methodgetStart" title="details" class="method-name">getStart</a>
+        ()
+        </div>
+</div>
+<hr />
+<A NAME='method_detail'></A>
+
+
+<a name="method__construct" id="method__construct"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/Constructor.gif" border="0" /> <strong class="method">Constructor __construct</strong> (line <span class="linenumber">888</span>)
+ </h4> 
+<h4><i>ProfilerSQLNode</i> <strong>__construct(
+string
+$query, [bool|<a href="../php-profiler/ProfilerNode.html">ProfilerNode</a>
+$profileNode = null])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Constructor for the <a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a></h5>
+<div class="desc"><p>initializes the timers and call stack for this sql query</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $query</strong>: the sql query for this node</li>
+			<li><strong>bool|<a href="../php-profiler/ProfilerNode.html">ProfilerNode</a> $profileNode</strong>: reference to the step that this query is running withing</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodend" id="methodend"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method end</strong> (line <span class="linenumber">906</span>)
+ </h4> 
+<h4><i><a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a></i> <strong>end(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>End the timers for this sql node</h5>
+<div class="desc"><p>Call this method when the sql query has finished running</p></div>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - return a reference to this query, for chaining.</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetCallstack" id="methodgetCallstack"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getCallstack</strong> (line <span class="linenumber">991</span>)
+ </h4> 
+<h4><i>array</i> <strong>getCallstack(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Return the call stack for this query</h5>
+<div class="desc"><p>Reference the php documentation for <a href="http://php.net/debug_backtrace">debug_backtrace</a> for the structure of the return array</p></div>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - call stack for this query</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetDuration" id="methodgetDuration"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getDuration</strong> (line <span class="linenumber">969</span>)
+ </h4> 
+<h4><i>float</i> <strong>getDuration(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the total execution duration for this query</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - execution duration for this query in milliseconds, rounded to 1 significant digit.</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetQuery" id="methodgetQuery"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getQuery</strong> (line <span class="linenumber">926</span>)
+ </h4> 
+<h4><i>string</i> <strong>getQuery(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the query for this SQLNode</h5>
+<div class="desc"><p>Query is parsed so extraneous spaces are removed where required</p></div>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - query for this sqlnode</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetQueryType" id="methodgetQueryType"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getQueryType</strong> (line <span class="linenumber">938</span>)
+ </h4> 
+<h4><i>string</i> <strong>getQueryType(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the type of query this is</h5>
+<div class="desc"><p>Parse the query and try to figure out what kind of query it is</p></div>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - 'reader' if this is a select query, 'writer' if this is a typical writer query, or 'special' if it's another kind</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetStart" id="methodgetStart"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getStart</strong> (line <span class="linenumber">979</span>)
+ </h4> 
+<h4><i>float</i> <strong>getStart(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the start time of this query, from the unix epoch.</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - milliseconds from the unix epoch when this query started, rounded to 1 significant digit</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
+<div class="tab-page" id="iVars">
+<h2 class="tab">Inherited Variables</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iVars" ) );</script>
+<!-- =========== VAR INHERITED SUMMARY =========== -->
+<A NAME='var_inherited_summary'><!-- --></A>
+<h3>Inherited Class Variable Summary</h3>
+
+	</div>
+<div class="tab-page" id="iMethods">
+<h2 class="tab">Inherited Methods</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iMethods" ) );</script>
+<!-- =========== INHERITED METHOD SUMMARY =========== -->
+<A NAME='functions_inherited'><!-- --></A>
+<h3>Inherited Method Summary</h3>
+
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+setupAllTabs();
+
+//]]>
+</script>
+	<div id="credit">
+		<hr />
+		Documentation generated on Thu, 05 Jan 2012 21:33:37 -0800 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Docs For Class ProfilerRenderer</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+  <script src="../media/lib/classTree.js"></script>
+<link id="webfx-tab-style-sheet" type="text/css" rel="stylesheet" href="../media/lib/tab.webfx.css" />
+<script type="text/javascript" src="../media/lib/tabpane.js"></script>
+  <script language="javascript" type="text/javascript" src="../media/lib/ua.js"></script>
+<script language="javascript" type="text/javascript">
+	var imgPlus = new Image();
+	var imgMinus = new Image();
+	imgPlus.src = "../media/images/plus.gif";
+	imgMinus.src = "../media/images/minus.gif";
+	
+	function showNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgMinus.src;
+		oTable.style.display = "block";
+	}
+	
+	function hideNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgPlus.src;
+		oTable.style.display = "none";
+	}
+	
+	function nodeIsVisible(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+        		break;
+        }
+		return (oTable && oTable.style.display == "block");
+	}
+	
+	function toggleNodeVisibility(Node){
+		if (nodeIsVisible(Node)){
+			hideNode(Node);
+		}else{
+			showNode(Node);
+		}
+	}
+</script>
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><!-- Start of Class Data -->
+<h2>
+	Class ProfilerRenderer
+</h2> (line <span class="linenumber">1018</span>)
+<div class="tab-pane" id="tabPane1">
+<script type="text/javascript">
+tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
+</script>
+
+<div class="tab-page" id="Description">
+<h2 class="tab">Description</h2>
+<pre>
+</pre>
+<p>
+	<b><i>Located in File: <a href="_profiler.php.html">/profiler.php</a></i></b><br>
+</p>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Rendering class used to render special step nodes.</h5>
+<ul>
+	</ul>
+<br /><hr />
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "Description" ) );</script>
+<div class="tab-page" id="tabPage1">
+
+<h2 class="tab">Class Variables</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="var-title">
+    static <span class="var-type">bool</span>
+    <a href="#var$includeJquery" title="details" class="property"><strong>$includeJquery</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">bool</span>
+    <a href="#var$includePrettify" title="details" class="property"><strong>$includePrettify</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">string</span>
+    <a href="#var$jQueryLocation" title="details" class="property"><strong>$jQueryLocation</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">string</span>
+    <a href="#var$prettifyLocation" title="details" class="property"><strong>$prettifyLocation</strong></a>
+</div>
+<hr />
+<a name="var$includeJquery" id="var$includeJquery"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $includeJquery =  false</strong> (line <span class="linenumber">1027</span>)
+ </h4>
+<h4>Data type : bool</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Does the profile renderer need to include the <a href="http://www.jquery.com">jQuery</a> library?</h5>
+<div class="desc"><p>Defaults to no.</p></div>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$includePrettify" id="var$includePrettify"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $includePrettify =  true</strong> (line <span class="linenumber">1043</span>)
+ </h4>
+<h4>Data type : bool</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Does the profile renderer need to include the <a href="http://code.google.com/p/google-code-prettify/">google-code-prettify</a> library?</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$jQueryLocation" id="var$jQueryLocation"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $jQueryLocation =  '/'</strong> (line <span class="linenumber">1036</span>)
+ </h4>
+<h4>Data type : string</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Location of the jQuery library</h5>
+<div class="desc"><p>The URL of the jQuery library, to be used in the script tag</p></div>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$prettifyLocation" id="var$prettifyLocation"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $prettifyLocation =  '/'</strong> (line <span class="linenumber">1052</span>)
+ </h4>
+<h4>Data type : string</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Location of the prettify library</h5>
+<div class="desc"><p>The URL of the prettify library, to be used in the script and link tags in the HTML source</p></div>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+</div>
+<div class="tab-page" id="constantsTabpage">
+
+<h2 class="tab">Class Constants</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<hr />
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "constantsTabpage" ) );</script>
+</div>
+<div class="tab-page" id="tabPage2">
+<h2 class="tab">Method Detail</h2>
+<!-- ============ METHOD DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="method-summary">
+    <div class="method-definition">
+    static         <span class="method-result">string</span>
+        <a href="#methodgetJqueryLocation" title="details" class="method-name">getJqueryLocation</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">string</span>
+        <a href="#methodgetPrettifyLocation" title="details" class="method-name">getPrettifyLocation</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">bool</span>
+        <a href="#methodincludeJquery" title="details" class="method-name">includeJquery</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">bool</span>
+        <a href="#methodincludePrettify" title="details" class="method-name">includePrettify</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodrenderNode" title="details" class="method-name">renderNode</a>
+        (<span class="var-type"><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></span>&nbsp;<span class="var-name">$node</span>, [<span class="var-type">int</span>&nbsp;<span class="var-name">$max_depth</span> = <span class="var-default">-1</span>])
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodrenderNodeSQL" title="details" class="method-name">renderNodeSQL</a>
+        (<span class="var-type"><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></span>&nbsp;<span class="var-name">$node</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodsetIncludeJquery" title="details" class="method-name">setIncludeJquery</a>
+        ([<span class="var-type">bool</span>&nbsp;<span class="var-name">$inc</span> = <span class="var-default">true</span>])
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodsetIncludePrettify" title="details" class="method-name">setIncludePrettify</a>
+        ([<span class="var-type">bool</span>&nbsp;<span class="var-name">$inc</span> = <span class="var-default">true</span>])
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodsetJqueryLocation" title="details" class="method-name">setJqueryLocation</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$url</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodsetPrettifyLocation" title="details" class="method-name">setPrettifyLocation</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$url</span>)
+        </div>
+</div>
+<hr />
+<A NAME='method_detail'></A>
+
+
+<a name="methodgetJqueryLocation" id="methodgetJqueryLocation"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method getJqueryLocation</strong> (line <span class="linenumber">1093</span>)
+ </h4> 
+<h4><i>string</i> <strong>getJqueryLocation(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the location of the jQuery library</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - location of the jQuery library</li>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerRenderer.html#var$jQueryLocation">ProfilerRenderer::$jQueryLocation</a></li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetPrettifyLocation" id="methodgetPrettifyLocation"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method getPrettifyLocation</strong> (line <span class="linenumber">1137</span>)
+ </h4> 
+<h4><i>string</i> <strong>getPrettifyLocation(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the location of the prettify library</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - url to the prettify library location</li>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerRenderer.html#var$prettifyLocation">ProfilerRenderer::$prettifyLocation</a></li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodincludeJquery" id="methodincludeJquery"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method includeJquery</strong> (line <span class="linenumber">1071</span>)
+ </h4> 
+<h4><i>bool</i> <strong>includeJquery(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get whether jQuery should be included or not</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - true if jquery should be included, false otherwise</li>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerRenderer.html#var$jQueryLocation">ProfilerRenderer::$jQueryLocation</a></li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodincludePrettify" id="methodincludePrettify"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method includePrettify</strong> (line <span class="linenumber">1115</span>)
+ </h4> 
+<h4><i>bool</i> <strong>includePrettify(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get whether the prettify library should be included</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - true if prettify should be included, false otherwise</li>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerRenderer.html#var$prettifyLocation">ProfilerRenderer::$prettifyLocation</a></li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodrenderNode" id="methodrenderNode"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method renderNode</strong> (line <span class="linenumber">1148</span>)
+ </h4> 
+<h4><i>void</i> <strong>renderNode(
+<a href="../php-profiler/ProfilerNode.html">ProfilerNode</a>
+$node, [int
+$max_depth = -1])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Render a <a href="../php-profiler/ProfilerNode.html">ProfilerNode</a> step node and it's children recursively</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a> $node</strong>: The node to render</li>
+			<li><strong>int $max_depth</strong>: the maximum depth of the tree to traverse and render.  -1 to traverse entire tree</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodrenderNodeSQL" id="methodrenderNodeSQL"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method renderNodeSQL</strong> (line <span class="linenumber">1178</span>)
+ </h4> 
+<h4><i>void</i> <strong>renderNodeSQL(
+<a href="../php-profiler/ProfilerNode.html">ProfilerNode</a>
+$node)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Render all <a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a> queries for the given node, and traverse it's child nodes  to render their queries also.</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a> $node</strong>: The node to begin rendering</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodsetIncludeJquery" id="methodsetIncludeJquery"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method setIncludeJquery</strong> (line <span class="linenumber">1060</span>)
+ </h4> 
+<h4><i>void</i> <strong>setIncludeJquery(
+[bool
+$inc = true])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Set whether to include jQuery library or not</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>bool $inc</strong>: true if <a href="../php-profiler/ProfilerRenderer.html">ProfilerRenderer</a> should include jQuery, or false if it's already available</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerRenderer.html#var$includeJquery">ProfilerRenderer::$includeJquery</a></li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodsetIncludePrettify" id="methodsetIncludePrettify"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method setIncludePrettify</strong> (line <span class="linenumber">1104</span>)
+ </h4> 
+<h4><i>void</i> <strong>setIncludePrettify(
+[bool
+$inc = true])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Set whether to include the prettify library or not</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>bool $inc</strong>: true if <a href="../php-profiler/ProfilerRenderer.html">ProfilerRenderer</a> should include the prettify library, false if it's already available</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerRenderer.html#var$includePrettify">ProfilerRenderer::$includePrettify</a></li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodsetJqueryLocation" id="methodsetJqueryLocation"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method setJqueryLocation</strong> (line <span class="linenumber">1082</span>)
+ </h4> 
+<h4><i>void</i> <strong>setJqueryLocation(
+string
+$url)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Set the location of the jQuery library</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $url</strong>: URL of the jQuery library</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerRenderer.html#var$jQueryLocation">ProfilerRenderer::$jQueryLocation</a></li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodsetPrettifyLocation" id="methodsetPrettifyLocation"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method setPrettifyLocation</strong> (line <span class="linenumber">1126</span>)
+ </h4> 
+<h4><i>void</i> <strong>setPrettifyLocation(
+string
+$url)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Set the location of the prettify library</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $url</strong>: URL of the prettify library</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerRenderer.html#var$prettifyLocation">ProfilerRenderer::$prettifyLocation</a></li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
+<div class="tab-page" id="iVars">
+<h2 class="tab">Inherited Variables</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iVars" ) );</script>
+<!-- =========== VAR INHERITED SUMMARY =========== -->
+<A NAME='var_inherited_summary'><!-- --></A>
+<h3>Inherited Class Variable Summary</h3>
+
+	</div>
+<div class="tab-page" id="iMethods">
+<h2 class="tab">Inherited Methods</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iMethods" ) );</script>
+<!-- =========== INHERITED METHOD SUMMARY =========== -->
+<A NAME='functions_inherited'><!-- --></A>
+<h3>Inherited Method Summary</h3>
+
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+setupAllTabs();
+
+//]]>
+</script>
+	<div id="credit">
+		<hr />
+		Documentation generated on Thu, 05 Jan 2012 21:33:37 -0800 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</div>
+</body>
+</html>

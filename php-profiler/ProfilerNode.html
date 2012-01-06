@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Docs For Class ProfilerNode</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+  <script src="../media/lib/classTree.js"></script>
+<link id="webfx-tab-style-sheet" type="text/css" rel="stylesheet" href="../media/lib/tab.webfx.css" />
+<script type="text/javascript" src="../media/lib/tabpane.js"></script>
+  <script language="javascript" type="text/javascript" src="../media/lib/ua.js"></script>
+<script language="javascript" type="text/javascript">
+	var imgPlus = new Image();
+	var imgMinus = new Image();
+	imgPlus.src = "../media/images/plus.gif";
+	imgMinus.src = "../media/images/minus.gif";
+	
+	function showNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgMinus.src;
+		oTable.style.display = "block";
+	}
+	
+	function hideNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgPlus.src;
+		oTable.style.display = "none";
+	}
+	
+	function nodeIsVisible(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+        		break;
+        }
+		return (oTable && oTable.style.display == "block");
+	}
+	
+	function toggleNodeVisibility(Node){
+		if (nodeIsVisible(Node)){
+			hideNode(Node);
+		}else{
+			showNode(Node);
+		}
+	}
+</script>
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><!-- Start of Class Data -->
+<h2>
+	Class ProfilerNode
+</h2> (line <span class="linenumber">450</span>)
+<div class="tab-pane" id="tabPane1">
+<script type="text/javascript">
+tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
+</script>
+
+<div class="tab-page" id="Description">
+<h2 class="tab">Description</h2>
+<pre>
+</pre>
+<p>
+	<b><i>Located in File: <a href="_profiler.php.html">/profiler.php</a></i></b><br>
+</p>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Class which represents the profiler steps</h5>
+<ul>
+	</ul>
+<br /><hr />
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "Description" ) );</script>
+<div class="tab-page" id="tabPage1">
+
+<h2 class="tab">Class Variables</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="var-title">
+    <span class="var-type">float</span>
+    <a href="#var$childDuration" title="details" class="property"><strong>$childDuration</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">array</span>
+    <a href="#var$childNodes" title="details" class="property"><strong>$childNodes</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">int</span>
+    <a href="#var$depth" title="details" class="property"><strong>$depth</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">float</span>
+    <a href="#var$ended" title="details" class="property"><strong>$ended</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">string</span>
+    <a href="#var$name" title="details" class="property"><strong>$name</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type"><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></span>
+    <a href="#var$parentNode" title="details" class="property"><strong>$parentNode</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">string</span>
+    <a href="#var$profilerKey" title="details" class="property"><strong>$profilerKey</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">float</span>
+    <a href="#var$selfDuration" title="details" class="property"><strong>$selfDuration</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">array</span>
+    <a href="#var$sqlQueries" title="details" class="property"><strong>$sqlQueries</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">int</span>
+    <a href="#var$sqlQueryCount" title="details" class="property"><strong>$sqlQueryCount</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">float</span>
+    <a href="#var$started" title="details" class="property"><strong>$started</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">float</span>
+    <a href="#var$totalDuration" title="details" class="property"><strong>$totalDuration</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">float</span>
+    <a href="#var$totalSQLQueryDuration" title="details" class="property"><strong>$totalSQLQueryDuration</strong></a>
+</div>
+<hr />
+<a name="var$childDuration" id="var$childDuration"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$childDuration =  0</strong> (line <span class="linenumber">499</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Total time children steps spent running</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$childNodes" id="var$childNodes"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$childNodes = array()</strong> (line <span class="linenumber">513</span>)
+ </h4>
+<h4>Data type : array</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>List of this step's direct children</h5>
+<ul>
+		<li><strong>var:</strong> - contains <a href="../php-profiler/ProfilerNode.html">ProfilerNode</a>s</li>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$depth" id="var$depth"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$depth =  0</strong> (line <span class="linenumber">462</span>)
+ </h4>
+<h4>Data type : int</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Tree depth of this step</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$ended" id="var$ended"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$ended =  null</strong> (line <span class="linenumber">478</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Time the step ended</h5>
+<div class="desc"><p>Stored as microseconds from the unix epoc.</p></div>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$name" id="var$name"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$name</strong> (line <span class="linenumber">456</span>)
+ </h4>
+<h4>Data type : string</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Name of the step</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$parentNode" id="var$parentNode"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$parentNode =  null</strong> (line <span class="linenumber">506</span>)
+ </h4>
+<h4>Data type : <a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>The parent step to this node</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$profilerKey" id="var$profilerKey"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$profilerKey =  null</strong> (line <span class="linenumber">545</span>)
+ </h4>
+<h4>Data type : string</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Local reference to profiler key generated at initialization</h5>
+<ul>
+		<li><strong>see:</strong> - <a href="../php-profiler/Profiler.html#var$profilerKey">Profiler::$profilerKey</a></li>
+		<li><strong>see:</strong> - Profiler::init</li>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$selfDuration" id="var$selfDuration"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$selfDuration =  null</strong> (line <span class="linenumber">492</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Total time the step ran WITHOUT it's children</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$sqlQueries" id="var$sqlQueries"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$sqlQueries = array()</strong> (line <span class="linenumber">527</span>)
+ </h4>
+<h4>Data type : array</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>List of this step's SQL queries</h5>
+<ul>
+		<li><strong>var:</strong> - contains <a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a>s</li>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$sqlQueryCount" id="var$sqlQueryCount"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$sqlQueryCount =  0</strong> (line <span class="linenumber">520</span>)
+ </h4>
+<h4>Data type : int</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Number of queries run at this step</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$started" id="var$started"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$started =  null</strong> (line <span class="linenumber">470</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Time the step started</h5>
+<div class="desc"><p>Stored as microseconds from the unix epoc.</p></div>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$totalDuration" id="var$totalDuration"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$totalDuration =  null</strong> (line <span class="linenumber">485</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Total time the step ran INCLUDING it's children</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$totalSQLQueryDuration" id="var$totalSQLQueryDuration"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$totalSQLQueryDuration =  0</strong> (line <span class="linenumber">536</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Total time spent performing SQL queries.</h5>
+<div class="desc"><p>Stored in microseconds</p></div>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+</div>
+<div class="tab-page" id="constantsTabpage">
+
+<h2 class="tab">Class Constants</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<hr />
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "constantsTabpage" ) );</script>
+</div>
+<div class="tab-page" id="tabPage2">
+<h2 class="tab">Method Detail</h2>
+<!-- ============ METHOD DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="method-summary">
+    <div class="method-definition">
+            <span class="method-result">ProfilerNode</span>
+        <a href="#method__construct" title="details" class="method-name">__construct</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$depth</span>, <span class="var-type"><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></span>&nbsp;<span class="var-name">$parentNode</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$profilerKey</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></span>
+        <a href="#methodaddChild" title="details" class="method-name">addChild</a>
+        (<span class="var-type"><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></span>&nbsp;<span class="var-name">$childNode</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></span>
+        <a href="#methodaddQueryDuration" title="details" class="method-name">addQueryDuration</a>
+        (<span class="var-type">float</span>&nbsp;<span class="var-name">$time</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">bool|<a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></span>
+        <a href="#methodend" title="details" class="method-name">end</a>
+        ([<span class="var-type">string</span>&nbsp;<span class="var-name">$profilerKey</span> = <span class="var-default">null</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result">array</span>
+        <a href="#methodgetChildren" title="details" class="method-name">getChildren</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">int</span>
+        <a href="#methodgetDepth" title="details" class="method-name">getDepth</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">float</span>
+        <a href="#methodgetEnd" title="details" class="method-name">getEnd</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">string</span>
+        <a href="#methodgetName" title="details" class="method-name">getName</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">bool|<a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></span>
+        <a href="#methodgetParent" title="details" class="method-name">getParent</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">float</span>
+        <a href="#methodgetSelfDuration" title="details" class="method-name">getSelfDuration</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">array</span>
+        <a href="#methodgetSQLQueries" title="details" class="method-name">getSQLQueries</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">int</span>
+        <a href="#methodgetSQLQueryCount" title="details" class="method-name">getSQLQueryCount</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">float</span>
+        <a href="#methodgetStart" title="details" class="method-name">getStart</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">float</span>
+        <a href="#methodgetTotalDuration" title="details" class="method-name">getTotalDuration</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">float</span>
+        <a href="#methodgetTotalSQLQueryDuration" title="details" class="method-name">getTotalSQLQueryDuration</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">bool</span>
+        <a href="#methodhasChildren" title="details" class="method-name">hasChildren</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">bool</span>
+        <a href="#methodhasNonTrivialChildren" title="details" class="method-name">hasNonTrivialChildren</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">bool</span>
+        <a href="#methodhasSQLQueries" title="details" class="method-name">hasSQLQueries</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">float</span>
+        <a href="#methodincreaseChildDuration" title="details" class="method-name">increaseChildDuration</a>
+        (<span class="var-type">float</span>&nbsp;<span class="var-name">$time</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a></span>
+        <a href="#methodsqlStart" title="details" class="method-name">sqlStart</a>
+        (<span class="var-type"><a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a></span>&nbsp;<span class="var-name">$sqlProfile</span>)
+        </div>
+</div>
+<hr />
+<A NAME='method_detail'></A>
+
+
+<a name="method__construct" id="method__construct"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/Constructor.gif" border="0" /> <strong class="method">Constructor __construct</strong> (line <span class="linenumber">561</span>)
+ </h4> 
+<h4><i>ProfilerNode</i> <strong>__construct(
+string
+$name, int
+$depth, <a href="../php-profiler/ProfilerNode.html">ProfilerNode</a>
+$parentNode, string
+$profilerKey)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Constructor for <a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></h5>
+<div class="desc"><p>Initializes this step on instanciation</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $name</strong>: name of this step</li>
+			<li><strong>int $depth</strong>: tree depth of this step</li>
+			<li><strong><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a> $parentNode</strong>: reference to this step's parent. null if top-level.</li>
+			<li><strong>string $profilerKey</strong>: api key to identify an internal api call from an external one.</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerNode.html#var$profilerKey">ProfilerNode::$profilerKey</a></li>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerNode.html#var$name">ProfilerNode::$name</a></li>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerNode.html#var$parentNode">ProfilerNode::$parentNode</a></li>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerNode.html#var$depth">ProfilerNode::$depth</a></li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodaddChild" id="methodaddChild"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method addChild</strong> (line <span class="linenumber">678</span>)
+ </h4> 
+<h4><i><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></i> <strong>addChild(
+<a href="../php-profiler/ProfilerNode.html">ProfilerNode</a>
+$childNode)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Add child <a href="../php-profiler/ProfilerNode.html">ProfilerNode</a> to this node</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a> $childNode</strong>: the profiler node to add</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - return a reference to this profiler node (for chaining)</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodaddQueryDuration" id="methodaddQueryDuration"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method addQueryDuration</strong> (line <span class="linenumber">775</span>)
+ </h4> 
+<h4><i><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></i> <strong>addQueryDuration(
+float
+$time)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Increment the total sql duration at this step</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>float $time</strong>: amount of time to increment the SQL duration by, in microseconds</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - return instance of this step, for chaining</li>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerSQLNode.html#methodend">ProfilerSQLNode::end()</a></li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodend" id="methodend"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method end</strong> (line <span class="linenumber">582</span>)
+ </h4> 
+<h4><i>bool|<a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></i> <strong>end(
+[string
+$profilerKey = null])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>End the timer for this step</h5>
+<div class="desc"><p>Call this after the code that is being profiled by this step has completed executing</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $profilerKey</strong>: this is for internal use only! don't ever pass anything! profiler::$profilerKey</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - returns parent node, or null if there is no parent</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetChildren" id="methodgetChildren"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getChildren</strong> (line <span class="linenumber">700</span>)
+ </h4> 
+<h4><i>array</i> <strong>getChildren(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the children steps for this step</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - list of ProfilerNodes that are the child of this node</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetDepth" id="methodgetDepth"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getDepth</strong> (line <span class="linenumber">639</span>)
+ </h4> 
+<h4><i>int</i> <strong>getDepth(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Return tree depth of this step</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - tree depth of this step</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetEnd" id="methodgetEnd"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getEnd</strong> (line <span class="linenumber">805</span>)
+ </h4> 
+<h4><i>float</i> <strong>getEnd(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the end time of this step in milliseconds</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - end time of this step, in milliseconds, from unix epoch. (1 significant digit)</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetName" id="methodgetName"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getName</strong> (line <span class="linenumber">629</span>)
+ </h4> 
+<h4><i>string</i> <strong>getName(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Return the name of this step</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - name of this step</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetParent" id="methodgetParent"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getParent</strong> (line <span class="linenumber">649</span>)
+ </h4> 
+<h4><i>bool|<a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></i> <strong>getParent(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Return this step's parent node</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - returns <a href="../php-profiler/ProfilerNode.html">ProfilerNode</a> object for the parent node to this step, or null if there is no parent</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetSelfDuration" id="methodgetSelfDuration"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getSelfDuration</strong> (line <span class="linenumber">825</span>)
+ </h4> 
+<h4><i>float</i> <strong>getSelfDuration(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the duration of execution for this step, excluding child nodes.</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - duration of this step, excluding child nodes. (1 significant digit)</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetSQLQueries" id="methodgetSQLQueries"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getSQLQueries</strong> (line <span class="linenumber">752</span>)
+ </h4> 
+<h4><i>array</i> <strong>getSQLQueries(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get all the SQL queries executed at this step</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - list of <a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a>s</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetSQLQueryCount" id="methodgetSQLQueryCount"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getSQLQueryCount</strong> (line <span class="linenumber">762</span>)
+ </h4> 
+<h4><i>int</i> <strong>getSQLQueryCount(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Return number of queries run at this step</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - number of queries run at this step</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetStart" id="methodgetStart"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getStart</strong> (line <span class="linenumber">795</span>)
+ </h4> 
+<h4><i>float</i> <strong>getStart(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the start time of this step in milliseconds</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - start time of this step, in milliseconds, from unix epoch. (1 significant digit)</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetTotalDuration" id="methodgetTotalDuration"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getTotalDuration</strong> (line <span class="linenumber">815</span>)
+ </h4> 
+<h4><i>float</i> <strong>getTotalDuration(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the total time spent executing this node, including children</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - duration of this step, in milliseconds. (1 significant digit)</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetTotalSQLQueryDuration" id="methodgetTotalSQLQueryDuration"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getTotalSQLQueryDuration</strong> (line <span class="linenumber">785</span>)
+ </h4> 
+<h4><i>float</i> <strong>getTotalSQLQueryDuration(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the total duration for SQL queries executed at this step in milliseconds</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - duration of query time at this step, in milliseconds, 1 significant digit</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodhasChildren" id="methodhasChildren"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method hasChildren</strong> (line <span class="linenumber">690</span>)
+ </h4> 
+<h4><i>bool</i> <strong>hasChildren(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Determine if this node has child steps or not</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - true if this node has child steps, false otherwise</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodhasNonTrivialChildren" id="methodhasNonTrivialChildren"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method hasNonTrivialChildren</strong> (line <span class="linenumber">714</span>)
+ </h4> 
+<h4><i>bool</i> <strong>hasNonTrivialChildren(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Determine if this node has trivial children</h5>
+<div class="desc"><p>Traverse the tree of child steps until a non-trivial node is found.  This is used at render time.</p></div>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - false if all children are trivial, true if there's at least one non-trivial</li>
+			<li><strong>see</strong> - <a href="../php-profiler/ProfilerRenderer.html#methodrenderNode">ProfilerRenderer::renderNode()</a></li>
+			<li><strong>see</strong> - <a href="../php-profiler/Profiler.html#methodisTrivial">Profiler::isTrivial()</a></li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodhasSQLQueries" id="methodhasSQLQueries"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method hasSQLQueries</strong> (line <span class="linenumber">742</span>)
+ </h4> 
+<h4><i>bool</i> <strong>hasSQLQueries(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Determine if SQL queries were executed at this step</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - true if there are queries, false if not</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodincreaseChildDuration" id="methodincreaseChildDuration"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method increaseChildDuration</strong> (line <span class="linenumber">664</span>)
+ </h4> 
+<h4><i>float</i> <strong>increaseChildDuration(
+float
+$time)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Increase the total time child steps have taken</h5>
+<div class="desc"><p>Stored in microseconds</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>float $time</strong>: amount of time to add to the total child duration, in microseconds</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - return number total time child steps have taken, in microseconds</li>
+			<li><strong>see</strong> - ProfilerNode::childDuration</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodsqlStart" id="methodsqlStart"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method sqlStart</strong> (line <span class="linenumber">616</span>)
+ </h4> 
+<h4><i><a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a></i> <strong>sqlStart(
+<a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a>
+$sqlProfile)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Add <a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a> to this step</h5>
+<div class="desc"><p>This method is called by the Profiler::sqlStart method</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong><a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a> $sqlProfile</strong>: an instance of the <a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a> to add to this step</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - reference to the <a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a> object for the query initiated</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
+<div class="tab-page" id="iVars">
+<h2 class="tab">Inherited Variables</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iVars" ) );</script>
+<!-- =========== VAR INHERITED SUMMARY =========== -->
+<A NAME='var_inherited_summary'><!-- --></A>
+<h3>Inherited Class Variable Summary</h3>
+
+	</div>
+<div class="tab-page" id="iMethods">
+<h2 class="tab">Inherited Methods</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iMethods" ) );</script>
+<!-- =========== INHERITED METHOD SUMMARY =========== -->
+<A NAME='functions_inherited'><!-- --></A>
+<h3>Inherited Method Summary</h3>
+
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+setupAllTabs();
+
+//]]>
+</script>
+	<div id="credit">
+		<hr />
+		Documentation generated on Thu, 05 Jan 2012 21:33:37 -0800 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</div>
+</body>
+</html>

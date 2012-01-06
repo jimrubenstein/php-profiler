@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Docs For Class Profiler</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+  <script src="../media/lib/classTree.js"></script>
+<link id="webfx-tab-style-sheet" type="text/css" rel="stylesheet" href="../media/lib/tab.webfx.css" />
+<script type="text/javascript" src="../media/lib/tabpane.js"></script>
+  <script language="javascript" type="text/javascript" src="../media/lib/ua.js"></script>
+<script language="javascript" type="text/javascript">
+	var imgPlus = new Image();
+	var imgMinus = new Image();
+	imgPlus.src = "../media/images/plus.gif";
+	imgMinus.src = "../media/images/minus.gif";
+	
+	function showNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgMinus.src;
+		oTable.style.display = "block";
+	}
+	
+	function hideNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgPlus.src;
+		oTable.style.display = "none";
+	}
+	
+	function nodeIsVisible(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+        		break;
+        }
+		return (oTable && oTable.style.display == "block");
+	}
+	
+	function toggleNodeVisibility(Node){
+		if (nodeIsVisible(Node)){
+			hideNode(Node);
+		}else{
+			showNode(Node);
+		}
+	}
+</script>
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><!-- Start of Class Data -->
+<h2>
+	Class Profiler
+</h2> (line <span class="linenumber">43</span>)
+<div class="tab-pane" id="tabPane1">
+<script type="text/javascript">
+tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
+</script>
+
+<div class="tab-page" id="Description">
+<h2 class="tab">Description</h2>
+<pre>
+</pre>
+<p>
+	<b><i>Located in File: <a href="_profiler.php.html">/profiler.php</a></i></b><br>
+</p>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Static Profiler Class</h5>
+<div class="desc"><p>The profiler class is where all interaction with the php-profiler takes place.  You use it to create  step nodes and render the output.</p></div>
+<ul>
+	</ul>
+<br /><hr />
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "Description" ) );</script>
+<div class="tab-page" id="tabPage1">
+
+<h2 class="tab">Class Variables</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="var-title">
+    static <span class="var-type">array</span>
+    <a href="#var$childDurations" title="details" class="property"><strong>$childDurations</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type"><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></span>
+    <a href="#var$currentNode" title="details" class="property"><strong>$currentNode</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">int</span>
+    <a href="#var$depthCount" title="details" class="property"><strong>$depthCount</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">bool</span>
+    <a href="#var$enabled" title="details" class="property"><strong>$enabled</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type"><a href="../php-profiler/ProfilerGhostNode.html">ProfilerGhostNode</a></span>
+    <a href="#var$ghostNode" title="details" class="property"><strong>$ghostNode</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">float</span>
+    <a href="#var$globalDuration" title="details" class="property"><strong>$globalDuration</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">float</span>
+    <a href="#var$globalEnd" title="details" class="property"><strong>$globalEnd</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">float</span>
+    <a href="#var$globalStart" title="details" class="property"><strong>$globalStart</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">bool</span>
+    <a href="#var$init" title="details" class="property"><strong>$init</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">string</span>
+    <a href="#var$profilerKey" title="details" class="property"><strong>$profilerKey</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">array</span>
+    <a href="#var$topNodes" title="details" class="property"><strong>$topNodes</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">float</span>
+    <a href="#var$totalQueryTime" title="details" class="property"><strong>$totalQueryTime</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">float</span>
+    <a href="#var$trivialThreshold" title="details" class="property"><strong>$trivialThreshold</strong></a>
+</div>
+<div class="var-title">
+    static <span class="var-type">float</span>
+    <a href="#var$trivialThresholdMS" title="details" class="property"><strong>$trivialThresholdMS</strong></a>
+</div>
+<hr />
+<a name="var$childDurations" id="var$childDurations"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $childDurations = array()</strong> (line <span class="linenumber">121</span>)
+ </h4>
+<h4>Data type : array</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Global tracker for step times</h5>
+<div class="desc"><p>Keeps track of how long each node took to execute.  This is used to determine  what is a &quot;trivial&quot; node, and what is not.</p></div>
+<ul>
+		<li><strong>var:</strong> - of floats</li>
+		<li><strong>see:</strong> - <a href="../php-profiler/Profiler.html#methodcalculateThreshold">Profiler::calculateThreshold()</a></li>
+		<li><strong>see:</strong> - <a href="../php-profiler/ProfilerNode.html#var$selfDuration">ProfilerNode::$selfDuration</a></li>
+		<li><strong>see:</strong> - <a href="../php-profiler/Profiler.html#methodisTrivial">Profiler::isTrivial()</a></li>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$currentNode" id="var$currentNode"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $currentNode =  null</strong> (line <span class="linenumber">67</span>)
+ </h4>
+<h4>Data type : <a href="../php-profiler/ProfilerNode.html">ProfilerNode</a></h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Tracks the current step node</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$depthCount" id="var$depthCount"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $depthCount =  0</strong> (line <span class="linenumber">74</span>)
+ </h4>
+<h4>Data type : int</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Tracks the current tree depth</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$enabled" id="var$enabled"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $enabled =  false</strong> (line <span class="linenumber">60</span>)
+ </h4>
+<h4>Data type : bool</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Used to identify when the profiler has been enabled.</h5>
+<div class="desc"><p>If &lt;em&gt;false&lt;/em&gt; no profiling data is stored, in order to reduce the overhead of running the profiler</p></div>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$ghostNode" id="var$ghostNode"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $ghostNode</strong> (line <span class="linenumber">162</span>)
+ </h4>
+<h4>Data type : <a href="../php-profiler/ProfilerGhostNode.html">ProfilerGhostNode</a></h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>A lightweight shell node used to return when the profiler is disabled.</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$globalDuration" id="var$globalDuration"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $globalDuration =  0</strong> (line <span class="linenumber">107</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Total time script took to run</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$globalEnd" id="var$globalEnd"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $globalEnd =  0</strong> (line <span class="linenumber">100</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Time the profiler 'ends'</h5>
+<div class="desc"><p>This is populated just before rendering output (see <a href="../php-profiler/Profiler.html#methodrender">Profiler::render()</a>)</p></div>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$globalStart" id="var$globalStart"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $globalStart =  0</strong> (line <span class="linenumber">91</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Time the profiler was included</h5>
+<div class="desc"><p>This is used to calculate time-from-start values for all methods  as well as total running time.</p></div>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$init" id="var$init"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $init =  false</strong> (line <span class="linenumber">51</span>)
+ </h4>
+<h4>Data type : bool</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Used to insure that the init method is only called once.</h5>
+<ul>
+		<li><strong>see:</strong> - <a href="../php-profiler/Profiler.html#methodinit">Profiler::init()</a></li>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$profilerKey" id="var$profilerKey"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $profilerKey =  null</strong> (line <span class="linenumber">155</span>)
+ </h4>
+<h4>Data type : string</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Used to identify when some methods are accessed internally  versus when they're used externally (as an api or so)</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$topNodes" id="var$topNodes"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $topNodes = array()</strong> (line <span class="linenumber">81</span>)
+ </h4>
+<h4>Data type : array</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>List of all top-level step nodes</h5>
+<ul>
+		<li><strong>var:</strong> - of <a href="../php-profiler/ProfilerNode.html">ProfilerNode</a>s</li>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$totalQueryTime" id="var$totalQueryTime"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $totalQueryTime =  0</strong> (line <span class="linenumber">147</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Total amount of time used in SQL queries</h5>
+<ul>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$trivialThreshold" id="var$trivialThreshold"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $trivialThreshold =  .75</strong> (line <span class="linenumber">130</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Percentile boundary for trivial execution times</h5>
+<ul>
+		<li><strong>see:</strong> - <a href="../php-profiler/Profiler.html#methodcalculateThreshold">Profiler::calculateThreshold()</a></li>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<a name="var$trivialThresholdMS" id="var$trivialThresholdMS"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $trivialThresholdMS =  0</strong> (line <span class="linenumber">140</span>)
+ </h4>
+<h4>Data type : float</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Execution time cut off value for trivial/non-trivial nodes</h5>
+<ul>
+		<li><strong>see:</strong> - <a href="../php-profiler/Profiler.html#methodcalculateThreshold">Profiler::calculateThreshold()</a></li>
+		<li><strong>see:</strong> - Profilier::isTrivial()</li>
+		<li><strong>access:</strong> - protected</li>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+</div>
+<div class="tab-page" id="constantsTabpage">
+
+<h2 class="tab">Class Constants</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<hr />
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "constantsTabpage" ) );</script>
+</div>
+<div class="tab-page" id="tabPage2">
+<h2 class="tab">Method Detail</h2>
+<!-- ============ METHOD DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="method-summary">
+    <div class="method-definition">
+    static         <span class="method-result">float</span>
+        <a href="#methodaddQueryDuration" title="details" class="method-name">addQueryDuration</a>
+        (<span class="var-type">float</span>&nbsp;<span class="var-name">$time</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">null</span>
+        <a href="#methoddisable" title="details" class="method-name">disable</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">null</span>
+        <a href="#methodenable" title="details" class="method-name">enable</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">bool|<a href="../php-profiler/ProfilerNode.html">ProfilerNode</a>|<a href="../php-profiler/ProfilerGhostNode.html">ProfilerGhostNode</a></span>
+        <a href="#methodend" title="details" class="method-name">end</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$nodeName</span>, [<span class="var-type">bool</span>&nbsp;<span class="var-name">$nuke</span> = <span class="var-default">false</span>])
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">float</span>
+        <a href="#methodgetGlobalStart" title="details" class="method-name">getGlobalStart</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">float</span>
+        <a href="#methodgetTotalQueryTime" title="details" class="method-name">getTotalQueryTime</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">null</span>
+        <a href="#methodinit" title="details" class="method-name">init</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">bool</span>
+        <a href="#methodisEnabled" title="details" class="method-name">isEnabled</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result"><a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a>|<a href="../php-profiler/ProfilerGhostNode.html">ProfilerGhostNode</a></span>
+        <a href="#methodsqlStart" title="details" class="method-name">sqlStart</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$query</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result"><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a>|<a href="../php-profiler/ProfilerGhostNode.html">ProfilerGhostNode</a></span>
+        <a href="#methodstart" title="details" class="method-name">start</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$nodeName</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodaddDuration" title="details" class="method-name">addDuration</a>
+        (<span class="var-type">float</span>&nbsp;<span class="var-name">$time</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodcalculateThreshold" title="details" class="method-name">calculateThreshold</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">float</span>
+        <a href="#methodgetGlobalDuration" title="details" class="method-name">getGlobalDuration</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">bool</span>
+        <a href="#methodisTrivial" title="details" class="method-name">isTrivial</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$node</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodrender" title="details" class="method-name">render</a>
+        ([<span class="var-type">int</span>&nbsp;<span class="var-name">$show_depth</span> = <span class="var-default">-1</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodsetTrivialThreshold" title="details" class="method-name">setTrivialThreshold</a>
+        (<span class="var-type">float</span>&nbsp;<span class="var-name">$threshold</span>)
+        </div>
+</div>
+<hr />
+<A NAME='method_detail'></A>
+
+
+<a name="methodaddQueryDuration" id="methodaddQueryDuration"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method addQueryDuration</strong> (line <span class="linenumber">322</span>)
+ </h4> 
+<h4><i>float</i> <strong>addQueryDuration(
+float
+$time)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Increment the total query time</h5>
+<div class="desc"><p>This method is used by the <a href="../php-profiler/ProfilerGhostNode.html">ProfilerGhostNode</a> to increment the total query time for the page execution.  This method should <strong>never</strong> be called in userland.  There is zero need to.</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>float $time</strong>: amount of time the query took to execute in microseconds.</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - current amount of time (in microseconds) used to execute sql queries.</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methoddisable" id="methoddisable"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method disable</strong> (line <span class="linenumber">212</span>)
+ </h4> 
+<h4><i>null</i> <strong>disable(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Disable the profiler</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - doesn't return anything.</li>
+			<li><strong>see</strong> - profiler::enabled</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodenable" id="methodenable"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method enable</strong> (line <span class="linenumber">200</span>)
+ </h4> 
+<h4><i>null</i> <strong>enable(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Enable the profiler</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - doesn't return anything</li>
+			<li><strong>see</strong> - profiler::enabled</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodend" id="methodend"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method end</strong> (line <span class="linenumber">263</span>)
+ </h4> 
+<h4><i>bool|<a href="../php-profiler/ProfilerNode.html">ProfilerNode</a>|<a href="../php-profiler/ProfilerGhostNode.html">ProfilerGhostNode</a></i> <strong>end(
+string
+$nodeName, [bool
+$nuke = false])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>End a step</h5>
+<div class="desc"><p>End a step by name, or end all steps in the current tree.</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $nodeName</strong>: ends the first-found step with this name. (Note: a warning is generated if it's not the current step, because this is probably unintentional!)</li>
+			<li><strong>bool $nuke</strong>: denotes whether you are intentionally attempting to terminate the entire step-stack.  If true, the warning mentioned is not generated.</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - returns null if you ended the top-level step node, or the parent to the ended node, or a ghost node if the profiler is disabled.</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetGlobalStart" id="methodgetGlobalStart"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method getGlobalStart</strong> (line <span class="linenumber">342</span>)
+ </h4> 
+<h4><i>float</i> <strong>getGlobalStart(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the global start time</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - start time of the script from unix epoch (milliseconds, 1 significant digit)</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodgetTotalQueryTime" id="methodgetTotalQueryTime"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method getTotalQueryTime</strong> (line <span class="linenumber">332</span>)
+ </h4> 
+<h4><i>float</i> <strong>getTotalQueryTime(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the total amount of query time</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - total time used to execute sql queries (milliseconds, 1 significant digit)</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodinit" id="methodinit"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method init</strong> (line <span class="linenumber">171</span>)
+ </h4> 
+<h4><i>null</i> <strong>init(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Initialize the profiler</h5>
+<div class="desc"><p>Set the profiler::$globalStart time, random profiler::$profilerKey, and instantiate a profiler::$ghostNode</p></div>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - doesn't return anything.</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodisEnabled" id="methodisEnabled"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method isEnabled</strong> (line <span class="linenumber">188</span>)
+ </h4> 
+<h4><i>bool</i> <strong>isEnabled(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Check to see if the profiler is enabled</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - true if profiler is enabled, false if disabled</li>
+			<li><strong>see</strong> - profiler::enabled</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodsqlStart" id="methodsqlStart"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method sqlStart</strong> (line <span class="linenumber">301</span>)
+ </h4> 
+<h4><i><a href="../php-profiler/ProfilerSQLNode.html">ProfilerSQLNode</a>|<a href="../php-profiler/ProfilerGhostNode.html">ProfilerGhostNode</a></i> <strong>sqlStart(
+string
+$query)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Start a new sql query</h5>
+<div class="desc"><p>This method is used to tell the profiler to track an sql query.  These are treated differently than step nodes</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $query</strong>: the query that you are running (used in the output of the profiler so you can view the query run)</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - returns an instance of the <a href="../php-profiler/ProfilerGhostNode.html">ProfilerGhostNode</a> if profiler is enabled, or <a href="../php-profiler/ProfilerGhostNode.html">ProfilerGhostNode</a> if disabled</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodstart" id="methodstart"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method start</strong> (line <span class="linenumber">233</span>)
+ </h4> 
+<h4><i><a href="../php-profiler/ProfilerNode.html">ProfilerNode</a>|<a href="../php-profiler/ProfilerGhostNode.html">ProfilerGhostNode</a></i> <strong>start(
+string
+$nodeName)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Start a new step</h5>
+<div class="desc"><p>This is the most-called method of the profiler.  It initializes and returns a new step node.</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $nodeName</strong>: name/identifier for your step. is used later in the output to identify this step</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - returns an instance of a <a href="../php-profiler/ProfilerNode.html">ProfilerNode</a> if the profiler is enabled, or a <a href="../php-profiler/ProfilerGhostNode.html">ProfilerGhostNode</a> if it's disabled</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodaddDuration" id="methodaddDuration"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method addDuration</strong> (line <span class="linenumber">383</span>)
+ </h4> 
+<h4><i>void</i> <strong>addDuration(
+float
+$time)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Add node duration to the profiler::$childDurations variable</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>float $time</strong>: duration of the child node in microseconds</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - profiler::$childDurations</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodcalculateThreshold" id="methodcalculateThreshold"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method calculateThreshold</strong> (line <span class="linenumber">412</span>)
+ </h4> 
+<h4><i>void</i> <strong>calculateThreshold(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Calculate the time cut-off for a trivial step</h5>
+<div class="desc"><p>Utilizes the profiler::$trivialThreshold value to determine how fast a step must be to be regarded &quot;trivial&quot;</p></div>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - profiler::$trivialThresholdMS</li>
+			<li><strong>access</strong> - protected</li>
+			<li><strong>uses</strong> - profiler::$trivialThresdhold</li>
+		</ul>
+</div>
+<a name="methodgetGlobalDuration" id="methodgetGlobalDuration"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method getGlobalDuration</strong> (line <span class="linenumber">352</span>)
+ </h4> 
+<h4><i>float</i> <strong>getGlobalDuration(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the global script duration</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - duration of the script (in milliseconds, 1 significant digit)</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodisTrivial" id="methodisTrivial"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method isTrivial</strong> (line <span class="linenumber">431</span>)
+ </h4> 
+<h4><i>bool</i> <strong>isTrivial(
+
+$node)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Determines if a node is trivial</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $node</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - true if a node is trivial, false if not</li>
+			<li><strong>access</strong> - public</li>
+			<li><strong>uses</strong> - profiler::$trivialThresholdMS</li>
+		</ul>
+</div>
+<a name="methodrender" id="methodrender"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method render</strong> (line <span class="linenumber">362</span>)
+ </h4> 
+<h4><i>void</i> <strong>render(
+[int
+$show_depth = -1])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Render the profiler output</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>int $show_depth</strong>: the depth of the step tree to traverse when rendering the profiler output. -1 to render the entire tree</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<a name="methodsetTrivialThreshold" id="methodsetTrivialThreshold"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method setTrivialThreshold</strong> (line <span class="linenumber">399</span>)
+ </h4> 
+<h4><i>void</i> <strong>setTrivialThreshold(
+float
+$threshold)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Set the Percentile Boundary Threshold</h5>
+<div class="desc"><p>This is used to set the percentile boundary for when a node is considered trivial or not.  By default, .75 is used.  This translates to the fastest 25% of nodes being regarded &quot;trivial&quot;.  This is a sliding scale, so you will always see some output, regardless of how fast your application runs.</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>float $threshold</strong>: the threshold to use as the percentile boundary</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - profiler::$trivialThreshold</li>
+			<li><strong>access</strong> - public</li>
+		</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
+<div class="tab-page" id="iVars">
+<h2 class="tab">Inherited Variables</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iVars" ) );</script>
+<!-- =========== VAR INHERITED SUMMARY =========== -->
+<A NAME='var_inherited_summary'><!-- --></A>
+<h3>Inherited Class Variable Summary</h3>
+
+	</div>
+<div class="tab-page" id="iMethods">
+<h2 class="tab">Inherited Methods</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iMethods" ) );</script>
+<!-- =========== INHERITED METHOD SUMMARY =========== -->
+<A NAME='functions_inherited'><!-- --></A>
+<h3>Inherited Method Summary</h3>
+
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+setupAllTabs();
+
+//]]>
+</script>
+	<div id="credit">
+		<hr />
+		Documentation generated on Thu, 05 Jan 2012 21:33:35 -0800 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</div>
+</body>
+</html>
