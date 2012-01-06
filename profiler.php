@@ -1039,7 +1039,11 @@ class ProfilerRenderer
 	 *
 	 * @var string
 	 */
+<<<<<<< Updated upstream
 	protected static $prettifyLocation = '/';
+=======
+	protected $prettifyLocation = '/code-prettify';
+>>>>>>> Stashed changes
 	
 	/**
 	 * Set whether to include jQuery library or not
