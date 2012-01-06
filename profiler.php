@@ -1053,6 +1053,17 @@ class ProfilerRenderer
 	}
 	
 	/**
+	 * Get whether jQuery should be included or not
+	 *
+	 * @see ProfileRenderer::$jQueryLocation
+	 * @return bool true if jquery should be included, false otherwise
+	 */
+	public function includeJquery()
+	{
+		return self::$includeJquery;
+	}
+	
+	/**
 	 * Set the location of the jQuery library
 	 *
 	 * @see ProfileRenderer::$jQueryLocation
@@ -1061,6 +1072,17 @@ class ProfilerRenderer
 	public function setJqueryLocation($url)
 	{
 		self::$jQueryLocation = $url;
+	}
+	
+	/**
+	 * Get the location of the jQuery library
+	 *
+	 * @see ProfileRenderer::$jQueryLocation
+	 * @return string location of the jQuery library
+	 */
+	public function getJqueryLocation()
+	{
+		return self::$jQueryLocation;
 	}
 	
 	/**
@@ -1075,6 +1097,17 @@ class ProfilerRenderer
 	}
 	
 	/**
+	 * Get whether the prettify library should be included
+	 *
+	 * @see ProfileRenderer::$prettifyLocation
+	 * @return bool true if prettify should be included, false otherwise
+	 */
+	public function includePrettify()
+	{
+		return self::$includePrettify;
+	}
+	
+	/**
 	 * Set the location of the prettify library
 	 *
 	 * @see ProfileRenderer::$prettifyLocation
@@ -1083,7 +1116,18 @@ class ProfilerRenderer
 	public function setPrettifyLocation($url)
 	{
 		self::$prettifyLocation = $url;
-	}			
+	}
+	
+	/**
+	 * Get the location of the prettify library
+	 *
+	 * @see ProfileRenderer::$prettifyLocation
+	 * @return string url to the prettify library location
+	 */
+	public function getPrettifyLocation()
+	{
+		return self::$pretiffyLocation;
+	}
 	
 	/**
 	 * Render a {@link ProfilerNode} step node and it's children recursively

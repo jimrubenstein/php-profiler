@@ -28,7 +28,11 @@
  * @package php-profiler
  */
 ?>
-<link rel="stylesheet" href="<?= LOUDDOOR_SERVER_PATH; ?>/css/code-prettify/prettify.css" type="text/css" media="screen" title="no title" charset="utf-8">
+
+<? if (ProfileRenderer::includePrettify()): ?>
+	<link rel="stylesheet" href="<?= ProfilerRenderer::getPrettifyLocation(); ?>/prettify.css" type="text/css" media="screen" title="no title" charset="utf-8">
+<? endif; ?>
+
 <style type="text/css">
 #profiler-main_container { 
 	position: fixed; 
@@ -201,13 +205,17 @@ pre.prettyprint {
 	</div><!-- /#profiler-results-container -->
 </div>
 
-<script src="<?= LOUDDOOR_SERVER_PATH; ?>/js/code-prettify/prettify.js" type="text/javascript" charset="utf-8"></script>
-<script src="<?= LOUDDOOR_SERVER_PATH; ?>/js/code-prettify/lang-sql.js" type="text/javascript" charset="utf-8"></script>
+<? if (ProfileRenderer::includeJquery()): ?>
+	<script src="<?= ProfileRenderer::getJqueryLocation(); ?>" type="text/javascript" charset="utf-8"></script>
+<? endif; ?>
+
+<? if (ProfileRenderer::includePrettify()): ?>
+	<script src="<?= ProfileRenderer::getPretifyLocation(); ?>/prettify.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?= ProfileRenderer::getPretifyLocation(); ?>/lang-sql.js" type="text/javascript" charset="utf-8"></script>
+<? endif; ?>
 <script type="text/javascript" charset="utf-8">
 (function($)
 {
-	console.log('are we getting runned?');
-		
 	$('#pofiler-main_timer').click(function(event)
 	{
 		$(this).toggleClass('profiler-button_selected');
