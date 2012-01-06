@@ -162,6 +162,14 @@ class Profiler
 	protected static $ghostNode;
 	
 	/**
+	 * Create a constructor that basically says "don't construct me!"
+	 */
+	public function __construct()
+	{
+		throw new Exception("The Profiler class is a static class.  Do not instantiate it, access all member methods statically.");
+	}
+	
+	/**
 	 * Initialize the profiler
 	 *
 	 * Set the {@link profiler::$globalStart} time, random {@link profiler::$profilerKey}, and instantiate a {@link profiler::$ghostNode}
