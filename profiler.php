@@ -1049,7 +1049,7 @@ class ProfilerRenderer
 	 *
 	 * @var string
 	 */
-	protected static $prettifyLocation = '/';
+	protected static $prettifyLocation = '/code-prettify';
 	
 	/**
 	 * Set whether to include jQuery library or not
