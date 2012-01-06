@@ -411,14 +411,17 @@ class Profiler
 	 */
 	protected static function calculateThreshold()
 	{
-		foreach (self::$childDurations as &$childDuration)
+		if (count(self::$childDurations))
 		{
-			$childDuration = round($childDuration * 1000, 1);
+			foreach (self::$childDurations as &$childDuration)
+			{
+				$childDuration = round($childDuration * 1000, 1);
+			}
+		
+			sort(self::$childDurations);
+		
+			self::$trivialThresholdMS = self::$childDurations[ floor(count(self::$childDurations) * self::$trivialThreshold) ];
 		}
-		
-		sort(self::$childDurations);
-		
-		self::$trivialThresholdMS = self::$childDurations[ floor(count(self::$childDurations) * self::$trivialThreshold) ];
 	}
 		
 	/**

@@ -192,7 +192,7 @@ pre.prettyprint {
 							<a href="#" id="profiler-show-trivial_button">show trivial</a>
 							<a href="#" id="profiler-show-total_duration">show time w/children</a>
 						</td>
-						<td colspan="3" class="profiler-total-querytime profiler-monospace"><?php echo round(self::getTotalQueryTime() / self::getGlobalDuration(), 2) * 100; ?><span class="unit">% in sql</span></td>
+						<td colspan="3" class="profiler-total-querytime profiler-monospace"><?php echo self::getGlobalDuration() > 0? round(self::getTotalQueryTime() / self::getGlobalDuration(), 2) * 100 : 0; ?><span class="unit">% in sql</span></td>
 					</tr>
 				</tfoot>
 			</table>
