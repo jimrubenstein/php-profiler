@@ -4,6 +4,8 @@ This small profiler is a library that is supposed to be similar to the Stack Exc
 
 php isn't always as eloquent as other languages, and as-such, some things don't translate 100%.  However, this is a good start.
 
+![php-profiler screenshot](http://jimrubenstein.github.com/php-profiler/img/php-profiler-ss.png)
+
 ## What does it profile?
 
 It will profile any block of code that you want to profile.  It automatically nests and keeps track of time in the current step level, as well as child levels.  It doesn't automatically attach itself to anything, so you can profile as much or as little as you like.
