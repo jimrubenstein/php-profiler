@@ -1014,7 +1014,7 @@ class ProfilerRenderer
 	 *
 	 * @var bool
 	 */
-	protected $includeJquery = false;
+	protected static $includeJquery = false;
 	
 	/**
 	 * Location of the jQuery library
@@ -1023,14 +1023,14 @@ class ProfilerRenderer
 	 *
 	 * @var string
 	 */
-	protected $jQueryLocation = '/';
+	protected static $jQueryLocation = '/';
 	
 	/**
 	 * Does the profile renderer need to include the {@link http://code.google.com/p/google-code-prettify/ google-code-prettify} library?
 	 *
 	 * @var bool
 	 */
-	protected $includePrettify = true;
+	protected static $includePrettify = true;
 	
 	/**
 	 * Location of the prettify library
@@ -1039,15 +1039,15 @@ class ProfilerRenderer
 	 *
 	 * @var string
 	 */
-	protected $prettifyLocation = '/';
+	protected static $prettifyLocation = '/';
 	
 	/**
 	 * Set whether to include jQuery library or not
 	 * 
-	 * @see ProfileRenderer::$includeJquery
-	 * @param bool $inc true if {@link ProfileRenderer} should include jQuery, or false if it's already available
+	 * @see ProfilerRenderer::$includeJquery
+	 * @param bool $inc true if {@link ProfilerRenderer} should include jQuery, or false if it's already available
 	 */
-	public function setIncludeJquery($inc = true)
+	public static function setIncludeJquery($inc = true)
 	{
 		self::$includeJquery = $inc;
 	}
@@ -1055,10 +1055,10 @@ class ProfilerRenderer
 	/**
 	 * Get whether jQuery should be included or not
 	 *
-	 * @see ProfileRenderer::$jQueryLocation
+	 * @see ProfilerRenderer::$jQueryLocation
 	 * @return bool true if jquery should be included, false otherwise
 	 */
-	public function includeJquery()
+	public static function includeJquery()
 	{
 		return self::$includeJquery;
 	}
@@ -1066,10 +1066,10 @@ class ProfilerRenderer
 	/**
 	 * Set the location of the jQuery library
 	 *
-	 * @see ProfileRenderer::$jQueryLocation
+	 * @see ProfilerRenderer::$jQueryLocation
 	 * @param string $url URL of the jQuery library
 	 */
-	public function setJqueryLocation($url)
+	public static function setJqueryLocation($url)
 	{
 		self::$jQueryLocation = $url;
 	}
@@ -1077,10 +1077,10 @@ class ProfilerRenderer
 	/**
 	 * Get the location of the jQuery library
 	 *
-	 * @see ProfileRenderer::$jQueryLocation
+	 * @see ProfilerRenderer::$jQueryLocation
 	 * @return string location of the jQuery library
 	 */
-	public function getJqueryLocation()
+	public static function getJqueryLocation()
 	{
 		return self::$jQueryLocation;
 	}
@@ -1088,10 +1088,10 @@ class ProfilerRenderer
 	/**
 	 * Set whether to include the prettify library or not
 	 *
-	 * @see ProfileRenderer::$includePrettify
-	 * @param bool $inc true if {@link ProfileRenderer} should include the prettify library, false if it's already available
+	 * @see ProfilerRenderer::$includePrettify
+	 * @param bool $inc true if {@link ProfilerRenderer} should include the prettify library, false if it's already available
 	 */
-	public function setIncludePrettify($inc = true)
+	public static function setIncludePrettify($inc = true)
 	{
 		self::$includePrettify = $inc;
 	}
@@ -1099,10 +1099,10 @@ class ProfilerRenderer
 	/**
 	 * Get whether the prettify library should be included
 	 *
-	 * @see ProfileRenderer::$prettifyLocation
+	 * @see ProfilerRenderer::$prettifyLocation
 	 * @return bool true if prettify should be included, false otherwise
 	 */
-	public function includePrettify()
+	public static function includePrettify()
 	{
 		return self::$includePrettify;
 	}
@@ -1110,10 +1110,10 @@ class ProfilerRenderer
 	/**
 	 * Set the location of the prettify library
 	 *
-	 * @see ProfileRenderer::$prettifyLocation
+	 * @see ProfilerRenderer::$prettifyLocation
 	 * @param string $url URL of the prettify library
 	 */	
-	public function setPrettifyLocation($url)
+	public static function setPrettifyLocation($url)
 	{
 		self::$prettifyLocation = $url;
 	}
@@ -1121,12 +1121,12 @@ class ProfilerRenderer
 	/**
 	 * Get the location of the prettify library
 	 *
-	 * @see ProfileRenderer::$prettifyLocation
+	 * @see ProfilerRenderer::$prettifyLocation
 	 * @return string url to the prettify library location
 	 */
-	public function getPrettifyLocation()
+	public static function getPrettifyLocation()
 	{
-		return self::$pretiffyLocation;
+		return self::$prettifyLocation;
 	}
 	
 	/**
@@ -1135,7 +1135,7 @@ class ProfilerRenderer
 	 * @param ProfilerNode $node The node to render
 	 * @param int $max_depth the maximum depth of the tree to traverse and render.  -1 to traverse entire tree
 	 */
-	public function renderNode($node, $max_depth = -1) { ?>
+	public static function renderNode($node, $max_depth = -1) { ?>
 
 		<tr class="depth_<?= $node->getDepth(); ?> <?= profiler::isTrivial($node) && !$node->hasNonTrivialChildren()? 'profiler-trivial' : ''; ?>">
 			<td class="profiler-step_id"><?= str_repeat('&nbsp;&nbsp;&nbsp;', $node->getDepth() - 1); ?><?= $node->getName(); ?></td>
@@ -1165,7 +1165,7 @@ class ProfilerRenderer
 	 *
 	 * @param ProfilerNode $node The node to begin rendering
 	 */
-	public function renderNodeSQL($node)
+	public static function renderNodeSQL($node)
 	{
 		if ($node->hasSQLQueries())
 		{

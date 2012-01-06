@@ -29,7 +29,7 @@
  */
 ?>
 
-<? if (ProfileRenderer::includePrettify()): ?>
+<? if (ProfilerRenderer::includePrettify()): ?>
 	<link rel="stylesheet" href="<?= ProfilerRenderer::getPrettifyLocation(); ?>/prettify.css" type="text/css" media="screen" title="no title" charset="utf-8">
 <? endif; ?>
 
@@ -205,13 +205,13 @@ pre.prettyprint {
 	</div><!-- /#profiler-results-container -->
 </div>
 
-<? if (ProfileRenderer::includeJquery()): ?>
-	<script src="<?= ProfileRenderer::getJqueryLocation(); ?>" type="text/javascript" charset="utf-8"></script>
+<? if (ProfilerRenderer::includeJquery()): ?>
+	<script src="<?= ProfilerRenderer::getJqueryLocation(); ?>" type="text/javascript" charset="utf-8"></script>
 <? endif; ?>
 
-<? if (ProfileRenderer::includePrettify()): ?>
-	<script src="<?= ProfileRenderer::getPretifyLocation(); ?>/prettify.js" type="text/javascript" charset="utf-8"></script>
-	<script src="<?= ProfileRenderer::getPretifyLocation(); ?>/lang-sql.js" type="text/javascript" charset="utf-8"></script>
+<? if (ProfilerRenderer::includePrettify()): ?>
+	<script src="<?= ProfilerRenderer::getPrettifyLocation(); ?>/prettify.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?= ProfilerRenderer::getPrettifyLocation(); ?>/lang-sql.js" type="text/javascript" charset="utf-8"></script>
 <? endif; ?>
 <script type="text/javascript" charset="utf-8">
 (function($)
