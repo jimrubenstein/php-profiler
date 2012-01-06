@@ -127,7 +127,7 @@
 }
 
 .profiler-children-hidden .profiler-step_total_duration { display: none; }
-.profiler-trivial-hidden .profiler-trivial td { display: none; }
+.profiler-trivial-hidden .profiler-trivial, .profiler-trivial-hidden .profiler-trivial td { display: none; }
 .profiler-trivial td { color: #aaa !important; }
 
 .profiler-query-more-info-links { text-align: right; font-size: 85%; }
