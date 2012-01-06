@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Php-Profiler
  *
@@ -1147,20 +1147,20 @@ class ProfilerRenderer
 	 */
 	public static function renderNode($node, $max_depth = -1) { ?>
 
-		<tr class="depth_<?= $node->getDepth(); ?> <?= profiler::isTrivial($node) && !$node->hasNonTrivialChildren()? 'profiler-trivial' : ''; ?>">
-			<td class="profiler-step_id"><?= str_repeat('&nbsp;&nbsp;&nbsp;', $node->getDepth() - 1); ?><?= $node->getName(); ?></td>
-			<td class="profiler-stat profiler-monospace profiler-step_self_duration"><?= $node->getSelfDuration(); ?></td>
-			<td class="profiler-stat profiler-monospace profiler-step_total_duration"><?= $node->getTotalDuration(); ?></td>
+		<tr class="depth_<?php echo $node->getDepth(); ?> <?php echo profiler::isTrivial($node) && !$node->hasNonTrivialChildren()? 'profiler-trivial' : ''; ?>">
+			<td class="profiler-step_id"><?php echo str_repeat('&nbsp;&nbsp;&nbsp;', $node->getDepth() - 1); ?><?php echo $node->getName(); ?></td>
+			<td class="profiler-stat profiler-monospace profiler-step_self_duration"><?php echo $node->getSelfDuration(); ?></td>
+			<td class="profiler-stat profiler-monospace profiler-step_total_duration"><?php echo $node->getTotalDuration(); ?></td>
 			<td class="profiler-stat profiler-monospace profiler-start_delay">
-				<span class="profiler-unit">+</span><?= round($node->getStart() - profiler::getGlobalStart(), 1); ?>
+				<span class="profiler-unit">+</span><?php echo round($node->getStart() - profiler::getGlobalStart(), 1); ?>
 			</td>
 			<td class="profiler-stat profiler-monospace profiler-query_count">
-				<a href="#" class="profiler-show-queries-button" data-node-id="<?= md5($node->getName() . $node->getStart()); ?>"><?= $node->getSQLQueryCount() . " sql"; ?></a>
+				<a href="#" class="profiler-show-queries-button" data-node-id="<?php echo md5($node->getName() . $node->getStart()); ?>"><?php echo $node->getSQLQueryCount() . " sql"; ?></a>
 			</td>
-			<td class="profiler-stat profiler-monospace profiler-query_time"><?= $node->getTotalSQLQueryDuration(); ?></td>
+			<td class="profiler-stat profiler-monospace profiler-query_time"><?php echo $node->getTotalSQLQueryDuration(); ?></td>
 		</tr>
 		
-		<? if ($node->hasChildren() && ($max_depth == -1 || $max_depth > $node->getDepth()))
+		<?php if ($node->hasChildren() && ($max_depth == -1 || $max_depth > $node->getDepth()))
 		{
 			foreach ($node->getChildren() as $childNode)
 			{
@@ -1183,47 +1183,47 @@ class ProfilerRenderer
 			$nodeQueries = $node->getSQLQueries();
 			?>
 			
-			<tr class="profiler-query-node-name" id="profiler-node-queries-<?= md5($node->getName() . $node->getStart()); ?>">
-				<th colspan="4"><?= $node->getName(); ?></th>
+			<tr class="profiler-query-node-name" id="profiler-node-queries-<?php echo md5($node->getName() . $node->getStart()); ?>">
+				<th colspan="4"><?php echo $node->getName(); ?></th>
 			</tr>
 		
-			<? foreach ($nodeQueries as $query) { ?>
-				<tr class="profiler-query-info-header profiler-node-queries-<?= md5($node->getName() . $node->getStart()); ?>">
+			<?php foreach ($nodeQueries as $query) { ?>
+				<tr class="profiler-query-info-header profiler-node-queries-<?php echo md5($node->getName() . $node->getStart()); ?>">
 					<th class="profiler-gutter">&nbsp;</td>
 					<th>start time (ms)</th>
 					<th>duration (ms)</th>
 					<th>query type</th>
 				</tr>
-				<tr class="profiler-query-info profiler-node-queries-<?= md5($node->getName() . $node->getStart()); ?>">
+				<tr class="profiler-query-info profiler-node-queries-<?php echo md5($node->getName() . $node->getStart()); ?>">
 					<td>&nbsp;</td>
 					<td class="profiler-query-start-timer profiler-monospace">
-						<span class="profiler-unit">T+</span><?= round($query->getStart() - Profiler::getGlobalStart(), 1); ?>
+						<span class="profiler-unit">T+</span><?php echo round($query->getStart() - Profiler::getGlobalStart(), 1); ?>
 					</td>
-					<td class="profiler-query-duration profiler-monospace"><?= $query->getDuration(); ?></td>
-					<td class="profiler-query-type"><?= $query->getQueryType(); ?></td>
+					<td class="profiler-query-duration profiler-monospace"><?php echo $query->getDuration(); ?></td>
+					<td class="profiler-query-type"><?php echo $query->getQueryType(); ?></td>
 				</tr>
 				<tr>
-					<td class="profiler-node-queries-<?= md5($node->getName() . $node->getStart()); ?>">&nbsp;</td>
-					<td class="profiler-node-queries-<?= md5($node->getName() . $node->getStart()); ?>" colspan="3">
-						<pre class="prettyprint lang-sql"><?= $query->getQuery(); ?></pre>
+					<td class="profiler-node-queries-<?php echo md5($node->getName() . $node->getStart()); ?>">&nbsp;</td>
+					<td class="profiler-node-queries-<?php echo md5($node->getName() . $node->getStart()); ?>" colspan="3">
+						<pre class="prettyprint lang-sql"><?php echo $query->getQuery(); ?></pre>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4" class="profiler-query-more-info-links">
 						<a href="#profiler-results" class="profiler-back-to-top">top</a>
 						&nbsp;&middot;&nbsp;
-						<a href="#<?= md5($query->getQuery()) . "_query_callstack"; ?>" class="profiler-show-callstack" data-query-id="<?= md5($query->getQuery()); ?>">show callstack</a>
+						<a href="#<?php echo md5($query->getQuery()) . "_query_callstack"; ?>" class="profiler-show-callstack" data-query-id="<?php echo md5($query->getQuery()); ?>">show callstack</a>
 					</td>
 				</tr>
-				<tr class="profiler-hidden" id="<?= md5($query->getQuery()) . "_query_callstack"; ?>">
+				<tr class="profiler-hidden" id="<?php echo md5($query->getQuery()) . "_query_callstack"; ?>">
 					<td>&nbsp;</td>
 					<td colspan="3">
 						<table class="profiler-query_callstack">
-							<? foreach ($query->getCallstack() as $stackStep): ?>
-								<tr class="<?= ++$c % 2? 'odd' : 'even'; ?>">
-									<td class="profiler-callstack-method"><code class="prettyprint"><?= (!empty($stackStep['class'])? $stackStep['class'] . $stackStep['type'] : '') . $stackStep['function']; ?></code></td>
+							<?php foreach ($query->getCallstack() as $stackStep): ?>
+								<tr class="<?php echo ++$c % 2? 'odd' : 'even'; ?>">
+									<td class="profiler-callstack-method"><code class="prettyprint"><?php echo (!empty($stackStep['class'])? $stackStep['class'] . $stackStep['type'] : '') . $stackStep['function']; ?></code></td>
 								</tr>
-							<? endforeach; ?>
+							<?php endforeach; ?>
 						</table>
 					</td>
 				</tr>
@@ -1231,7 +1231,7 @@ class ProfilerRenderer
 					<td colspan="4"><div class="profiler-hr"><hr /></div></td>
 				</tr>
 				
-			<? }
+			<?php }
 		}
 		
 		if ($node->hasChildren())

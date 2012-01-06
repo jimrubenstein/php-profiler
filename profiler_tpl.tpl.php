@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Php-Profiler output template
  *
@@ -29,9 +29,9 @@
  */
 ?>
 
-<? if (ProfilerRenderer::includePrettify()): ?>
-	<link rel="stylesheet" href="<?= ProfilerRenderer::getPrettifyLocation(); ?>/prettify.css" type="text/css" media="screen" title="no title" charset="utf-8">
-<? endif; ?>
+<?php if (ProfilerRenderer::includePrettify()): ?>
+	<link rel="stylesheet" href="<?php echo ProfilerRenderer::getPrettifyLocation(); ?>/prettify.css" type="text/css" media="screen" title="no title" charset="utf-8">
+<?php endif; ?>
 
 <style type="text/css">
 #profiler-main_container { 
@@ -160,18 +160,18 @@ pre.prettyprint {
 </style>
 <div id="profiler-main_container">
 	<div id="pofiler-main_timer" class="profiler-button">
-		<?= self::getGlobalDuration(); ?> <span class="profiler-unit">ms</span>
+		<?php echo self::getGlobalDuration(); ?> <span class="profiler-unit">ms</span>
 	</div>
 	
 	<div class="profiler-result-container profiler-hidden">
 		<div id="profiler-results" class="profiler-result profiler-result-steps profiler-children-hidden profiler-trivial-hidden">
 			<div class="profiler-info">
-				<span class="profiler-title"><?= substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], '?')); ?></span>
+				<span class="profiler-title"><?php echo substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], '?')); ?></span>
 			
 				<span class="profiler-servername">
-					<? list($servername) = explode('.', php_uname('n')); echo $servername; ?>
+					<?php list($servername) = explode('.', php_uname('n')); echo $servername; ?>
 					on
-					<?= date('D, d M Y H:i:s T'); ?>
+					<?php echo date('D, d M Y H:i:s T'); ?>
 				</span>
 			</div>
 		
@@ -184,7 +184,7 @@ pre.prettyprint {
 					<th class="profiler-step-query_info" colspan="2">query time (ms)</th>
 				</tr>
 	
-				<? foreach (self::$topNodes as $node): ProfilerRenderer::renderNode($node, $show_depth); endforeach; ?>
+				<?php foreach (self::$topNodes as $node): ProfilerRenderer::renderNode($node, $show_depth); endforeach; ?>
 			
 				<tfoot>
 					<tr>
@@ -192,7 +192,7 @@ pre.prettyprint {
 							<a href="#" id="profiler-show-trivial_button">show trivial</a>
 							<a href="#" id="profiler-show-total_duration">show time w/children</a>
 						</td>
-						<td colspan="3" class="profiler-total-querytime profiler-monospace"><?= round(self::getTotalQueryTime() / self::getGlobalDuration(), 2) * 100; ?><span class="unit">% in sql</span></td>
+						<td colspan="3" class="profiler-total-querytime profiler-monospace"><?php echo round(self::getTotalQueryTime() / self::getGlobalDuration(), 2) * 100; ?><span class="unit">% in sql</span></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -200,20 +200,20 @@ pre.prettyprint {
 	
 		<div id="profiler-query-results" class="profiler-result profiler-result-queries profiler-hidden">
 			<table border="0" cell-padding="0" cellspacing="0">
-				<? foreach (self::$topNodes as $node): ProfilerRenderer::renderNodeSQL($node); endforeach; ?>
+				<?php foreach (self::$topNodes as $node): ProfilerRenderer::renderNodeSQL($node); endforeach; ?>
 			</table>
 		</div><!-- /#profiler-query-results -->
 	</div><!-- /#profiler-results-container -->
 </div>
 
-<? if (ProfilerRenderer::includeJquery()): ?>
-	<script src="<?= ProfilerRenderer::getJqueryLocation(); ?>" type="text/javascript" charset="utf-8"></script>
-<? endif; ?>
+<?php if (ProfilerRenderer::includeJquery()): ?>
+	<script src="<?php echo ProfilerRenderer::getJqueryLocation(); ?>" type="text/javascript" charset="utf-8"></script>
+<?php endif; ?>
 
-<? if (ProfilerRenderer::includePrettify()): ?>
-	<script src="<?= ProfilerRenderer::getPrettifyLocation(); ?>/prettify.js" type="text/javascript" charset="utf-8"></script>
-	<script src="<?= ProfilerRenderer::getPrettifyLocation(); ?>/lang-sql.js" type="text/javascript" charset="utf-8"></script>
-<? endif; ?>
+<?php if (ProfilerRenderer::includePrettify()): ?>
+	<script src="<?php echo ProfilerRenderer::getPrettifyLocation(); ?>/prettify.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?php echo ProfilerRenderer::getPrettifyLocation(); ?>/lang-sql.js" type="text/javascript" charset="utf-8"></script>
+<?php endif; ?>
 <script type="text/javascript" charset="utf-8">
 (function($)
 {
