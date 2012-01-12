@@ -1,5 +1,7 @@
 <?
 
+date_default_timezone_set("UTC");
+
 require "../profiler.php";
 Profiler::enable();
 
@@ -10,19 +12,19 @@ ProfilerRenderer::setPrettifyLocation("../code-prettify");
 
 $s1 = Profiler::start('Step 1');
 //do some important things!
-sleep(.5);
+usleep(500000);  // 0.5 sec
 $s1->end();
 
 $s2 = Profiler::start('Step 2');
 //more important things
-sleep(.1);
+usleep(100000);  // 0.1 sec
 	
 	$s3 = Profiler::start('Step 3');
 	//some nested things..that are important and stuff.
 	sleep(1);
 
 	$sql = Profiler::sqlStart("SELECT * FROM TABLE WHERE 1");
-	sleep(1.5);
+	usleep(1500000);  // 1.5 sec
 	$sql->end();
 	
 	$s3->end();
