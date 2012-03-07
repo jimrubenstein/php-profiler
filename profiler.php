@@ -310,10 +310,15 @@ class Profiler
 	{	
 		if (!self::isEnabled()) return self::$ghostNode;
 	
-		$sqlProfile = new ProfilerSQLNode($query, self::$currentNode);
-				
-		self::$currentNode->sqlStart($sqlProfile);
+		if (false == self::$currentNode)
+		{
+			self::start("Profiler Default Top Level");			
+		}
 		
+		$sqlProfile = new ProfilerSQLNode($query, self::$currentNode);
+
+		self::$currentNode->sqlStart($sqlProfile);
+
 		return $sqlProfile;
 	}
 	
