@@ -360,11 +360,51 @@ class Profiler
 	/**
 	 * Get the global script duration
 	 *
+	 * @param string unit a metric prefix to force the unit of bytes used (B, K, M, G)
+	 *
 	 * @return float duration of the script (in milliseconds, 1 significant digit)
 	 */
 	public static function getGlobalDuration()
 	{
 		return round(self::$globalDuration * 1000, 1);
+	}
+	
+	/**
+	 * Get the global memory usage in KB
+	 */
+	public static function getMemUsage($unit = '')
+	{
+		$usage = memory_get_usage();
+		
+		if ($usage < 1e3 || $unit == 'B')
+		{
+			$unit = '';
+		}
+		elseif ($usage < 9e5 || $unit == 'K')
+		{
+			$usage = round($usage / 1e3, 2);
+			$unit = 'K';
+		}
+		elseif ($usage < 9e8 || $unit == 'M')
+		{
+			$usage = round($usage / 1e6, 2);
+			$unit = 'M';
+		}
+		elseif ($usage < 9e11 || $unit = 'G')
+		{
+			$usage = round($usage / 1e9, 2);
+			$unit = 'G';
+		}
+		else
+		{
+			$usage = round($usage / 1e12, 2);
+			$unit = 'T';
+		}
+		
+		return array(
+			'num' => $usage,
+			'unit' => $unit,
+		);
 	}
 	
 	/**
