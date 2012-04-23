@@ -368,6 +368,47 @@ class Profiler
 	}
 	
 	/**
+	 * Get the global memory usage in KB
+	 * 
+ 	 * @param string unit a metric prefix to force the unit of bytes used (B, K, M, G)
+	 *
+	 */
+	public static function getMemUsage($unit = '')
+	{
+		$usage = memory_get_usage();
+		
+		if ($usage < 1e3 || $unit == 'B')
+		{
+			$unit = '';
+		}
+		elseif ($usage < 9e5 || $unit == 'K')
+		{
+			$usage = round($usage / 1e3, 2);
+			$unit = 'K';
+		}
+		elseif ($usage < 9e8 || $unit == 'M')
+		{
+			$usage = round($usage / 1e6, 2);
+			$unit = 'M';
+		}
+		elseif ($usage < 9e11 || $unit = 'G')
+		{
+			$usage = round($usage / 1e9, 2);
+			$unit = 'G';
+		}
+		else
+		{
+			$usage = round($usage / 1e12, 2);
+			$unit = 'T';
+		}
+		
+		return array(
+			'num' => $usage,
+			'unit' => $unit,
+		);
+	}
+	
+	/**
 	 * Render the profiler output
 	 *
 	 * @param int $show_depth the depth of the step tree to traverse when rendering the profiler output. -1 to render the entire tree
