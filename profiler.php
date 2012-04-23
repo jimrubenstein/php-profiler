@@ -360,8 +360,6 @@ class Profiler
 	/**
 	 * Get the global script duration
 	 *
-	 * @param string unit a metric prefix to force the unit of bytes used (B, K, M, G)
-	 *
 	 * @return float duration of the script (in milliseconds, 1 significant digit)
 	 */
 	public static function getGlobalDuration()
@@ -371,6 +369,9 @@ class Profiler
 	
 	/**
 	 * Get the global memory usage in KB
+	 * 
+ 	 * @param string unit a metric prefix to force the unit of bytes used (B, K, M, G)
+	 *
 	 */
 	public static function getMemUsage($unit = '')
 	{
