@@ -20,6 +20,7 @@ Glad you asked! It's simple!
 
 **Method #1**
 
+		```php
 		<?php
  		require 'profiler.php';
  
@@ -30,7 +31,8 @@ Glad you asked! It's simple!
  		$profBlock->end();
  		
 	 	?>
-
+		```
+		
 You can also accomplish the same thing without keeping track of the reference to the current step block, like this:
 
 **Method #2**
