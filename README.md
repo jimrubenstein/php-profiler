@@ -36,37 +36,41 @@ $profBlock->end();
 You can also accomplish the same thing without keeping track of the reference to the current step block, like this:
 
 **Method #2**
- 
-	 	<?php
- 		require 'profiler.php';
- 	
- 		Profiler::enable();
- 		
- 		Profiler::start('my block');
- 		sleep(1);
- 		Profiler::end('my block');
-	 	?>
-	
+
+```php
+<?php
+require 'profiler.php';
+
+Profiler::enable();
+
+Profiler::start('my block');
+sleep(1);
+Profiler::end('my block');
+?>
+```
+
  The caveat to method #2 is that your strings must match, so it's easy to overlook a small spelling mistake.  However, if the strings don't match, you'll get a PHP warning telling you as such.
 
 ### To profile an sql query:
 
-	<?php
-		//we'll assume you have the profiler included and enabled now.. you only need to require it one time for any project.
-		
-		$queryProf = Profiler::sqlStart($query);
-		//make sure you pass your query. that way the profile can analyze it and let you know which queries are being slow
-		$db->query($query);
-		$queryProf->end();
-		
-	?>
-	
+```php
+<?php
+//we'll assume you have the profiler included and enabled now.. you only need to require it one time for any project.
+
+$queryProf = Profiler::sqlStart($query);
+//make sure you pass your query. that way the profile can analyze it and let you know which queries are being slow
+$db->query($query);
+$queryProf->end();
+?>
+```
 ### To output the results, so you can, uh, see them:
 
 Include the following code in your view, template, output, or whatever it is that you may be using to generate output
 
-	<?php Profiler::render(); ?>
-	
+```php
+<?php Profiler::render(); ?>
+```
+
 That's it!  You'll now be able to spot optimizationaly troubled spots of your application!
 
 ## Notes
