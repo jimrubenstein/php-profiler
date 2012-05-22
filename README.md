@@ -20,18 +20,18 @@ Glad you asked! It's simple!
 
 **Method #1**
 
-		```php
-		<?php
- 		require 'profiler.php';
- 
-		Profiler::enable();
+```php
+<?php
+require 'profiler.php';
+
+Profiler::enable();
  		
- 		$profBlock = Profiler::start('my block');
- 		sleep(1);
- 		$profBlock->end();
+$profBlock = Profiler::start('my block');
+sleep(1);
+$profBlock->end();
  		
-	 	?>
-		```
+?>
+```
 		
 You can also accomplish the same thing without keeping track of the reference to the current step block, like this:
 
