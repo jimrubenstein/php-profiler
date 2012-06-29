@@ -239,6 +239,7 @@ pre.prettyprint {
 			$(this).text('hide children');
 			flagChildrenVisible = true;
 		}
+		event.preventDefault();
 	});
 	
 	var flagTrivialVisible = false;
@@ -256,6 +257,7 @@ pre.prettyprint {
 			$('#profiler-results').removeClass('profiler-trivial-hidden')
 			$(this).text('hide trivial');
 		}
+		event.preventDefault();
 	})
 	
 	var queryVisibleFlags = {};
@@ -281,7 +283,7 @@ pre.prettyprint {
 			queryVisibleFlags[ queryId ] = true;
 		}
 		
-		return false;
+		event.preventDefault();
 	})
 
 	$('.profiler-show-queries-button').click(function(event)
@@ -299,7 +301,7 @@ pre.prettyprint {
 			
 			cell.animate({ backgroundColor: currentColor }, 2000);
 		});
-		
+		event.preventDefault();
 	});
 	
 	prettyPrint();
