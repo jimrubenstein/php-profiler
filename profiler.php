@@ -948,7 +948,7 @@ class ProfilerSQLNode
 		$this->query = $query;
 		$this->profileNode = $profileNode;
 		
-		$this->callstack = debug_backtrace(false);
+		$this->callstack = debug_backtrace();
 		array_shift($this->callstack);
 		array_shift($this->callstack);
 	}
