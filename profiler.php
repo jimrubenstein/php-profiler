@@ -370,7 +370,7 @@ class Profiler
 	/**
 	 * Get the global memory usage in KB
 	 * 
- 	 * @param string unit a metric prefix to force the unit of bytes used (B, K, M, G)
+	 * @param string unit a metric prefix to force the unit of bytes used (B, K, M, G)
 	 *
 	 */
 	public static function getMemUsage($unit = '')
