@@ -1,4 +1,4 @@
-<?
+<?php
 
 date_default_timezone_set("UTC");
 
@@ -37,8 +37,7 @@ $s2->end();
 </head>
 <body>
 	
-<? Profiler::render(); ?>
+<?php Profiler::render(); ?>
 
 </body>
 </html>
-	
