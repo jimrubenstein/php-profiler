@@ -166,7 +166,7 @@ class Profiler
 	 */
 	public function __construct()
 	{
-		throw new Exception("The Profiler class is a static class.  Do not instantiate it, access all member methods statically.");
+		throw new Exception("The Profiler class is a static class. Do not instantiate it, access all member methods statically.");
 	}
 	
 	/**
@@ -692,7 +692,7 @@ class ProfilerNode
 	 * Return tree depth of this step
 	 *
 	 * @return int tree depth of this step
-	 */	 
+	 */
 	public function getDepth()
 	{
 		return $this->depth;
@@ -758,7 +758,7 @@ class ProfilerNode
 	{
 		return $this->childNodes;
 	}
-	
+
 	/**
 	 * Determine if this node has trivial children
 	 *
@@ -778,19 +778,16 @@ class ProfilerNode
 				{
 					return true;
 				}
-				else
+				if ($child->hasNonTrivialChildren())
 				{
-					if ($child->hasNonTrivialChildren())
-					{
-						return true;
-					}
+					return true;
 				}
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
 	 * Determine if SQL queries were executed at this step
 	 *
@@ -1290,7 +1287,7 @@ class ProfilerRenderer
 				
 			<?php }
 		}
-		
+
 		if ($node->hasChildren())
 		{
 			foreach ($node->getChildren() as $childNode)
