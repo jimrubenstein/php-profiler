@@ -264,7 +264,6 @@ pre.prettyprint {
 	$('.profiler-show-callstack').click(function(event)
 	{
 		var queryId = $(this).data('query-id');
-		console.log(queryId);
 		if (typeof queryVisibleFlags[ queryId ] == 'undefined')
 		{
 			queryVisibleFlags[ queryId ] = false;
