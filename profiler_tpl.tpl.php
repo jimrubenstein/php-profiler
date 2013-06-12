@@ -159,7 +159,7 @@ pre.prettyprint {
 
 </style>
 <div id="profiler-main_container">
-	<div id="pofiler-main_timer" class="profiler-button">
+	<div id="profiler-main_timer" class="profiler-button">
 		<?php echo self::getGlobalDuration(); ?> <span class="profiler-unit">ms</span>  / 
 		<?php $mem = self::getMemUsage(); echo $mem['num']; ?> <span class="profiler-unit"><?php echo $mem['unit'] ?>B</span>
 	</div>
@@ -218,7 +218,7 @@ pre.prettyprint {
 <script type="text/javascript" charset="utf-8">
 (function($)
 {
-	$('#pofiler-main_timer').click(function(event)
+	$('#profiler-main_timer').click(function(event)
 	{
 		$(this).toggleClass('profiler-button_selected');
 		$('.profiler-result-container').toggleClass('profiler-hidden');
